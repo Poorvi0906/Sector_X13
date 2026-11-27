@@ -100,15 +100,26 @@ namespace SectorX13.UI
 
         private void BuildSplash(RectTransform root)
         {
-            var body = X13UIBuilderRuntime.CreateScrollBody(root, 120f, 120f);
+            var body = X13UIBuilderRuntime.CreateScrollBody(root, 60f, 60f);
 
-            var hero = X13UIBuilderRuntime.CreateCard(body, "SplashCard", X13Theme.CardSurface, X13Theme.CyanAccent, 680f);
-            X13UIBuilderRuntime.CreateText(hero, "Tag", "SAFE VIRTUAL CHEMISTRY", 26, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
-            X13UIBuilderRuntime.CreateText(hero, "Title", "SECTOR X-13", 76, X13Theme.TextPrimary, FontStyle.Bold, TextAnchor.MiddleCenter);
-            X13UIBuilderRuntime.CreateText(hero, "Subtitle", "AR-Based Safe Chemistry Experimentation System", 30, X13Theme.TextSecondary, FontStyle.Normal, TextAnchor.MiddleCenter);
-            X13UIBuilderRuntime.CreateText(hero, "Disclaimer", "Educational virtual laboratory only. Evaluates predefined scenarios before permitting virtual mixing.", 24, X13Theme.TextSecondary, FontStyle.Italic, TextAnchor.MiddleCenter);
+            X13UIBuilderRuntime.CreateText(body, "TopTag", "AR CHEMISTRY SYSTEM · v2.4", 24, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
 
-            X13UIBuilderRuntime.CreateButton(body, "EnterLabBtn", "ENTER LABORATORY  ->", X13Theme.ButtonPrimaryBg, X13Theme.TextDark, () => Navigate(X13SceneIds.Home), 110f, 34);
+            var iconWrap = X13UIBuilderRuntime.CreateRow(body, "AtomRow");
+            X13UIBuilderRuntime.CreateAtomIcon(iconWrap, "SplashAtom", 260f);
+
+            X13UIBuilderRuntime.CreateText(body, "PlatformTag", "EDUCATIONAL SIMULATION PLATFORM", 22, X13Theme.TextSecondary, FontStyle.Bold, TextAnchor.MiddleCenter);
+            X13UIBuilderRuntime.CreateText(body, "Title", "SECTOR X-13", 76, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
+            X13UIBuilderRuntime.CreateText(body, "Subtitle", "Explore Chemistry. Understand Risk.", 30, X13Theme.TextPrimary, FontStyle.Normal, TextAnchor.MiddleCenter);
+
+            var calRow = X13UIBuilderRuntime.CreateRow(body, "CalRow");
+            X13UIBuilderRuntime.CreateText(calRow, "CalLabel", "SYSTEMS CALIBRATED", 21, X13Theme.TextSecondary, FontStyle.Bold, TextAnchor.MiddleLeft);
+            X13UIBuilderRuntime.CreateText(calRow, "CalPct", "100%", 21, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleRight);
+
+            var barBg = X13UIBuilderRuntime.CreateCard(body, "ProgressBar", X13Theme.CyanAccent, X13Theme.CyanAccent, 12f, 6);
+            barBg.GetComponent<VerticalLayoutGroup>().padding = new RectOffset(0, 0, 0, 0);
+
+            X13UIBuilderRuntime.CreateButton(body, "EnterLabBtn", "ENTER LAB  ->", X13Theme.ButtonPrimaryBg, X13Theme.TextDark, () => Navigate(X13SceneIds.Home), 104f, 32, primaryGradient: true);
+            X13UIBuilderRuntime.CreateText(body, "Footer", "VIRTUAL ENVIRONMENT · SUPERVISED LEARNING", 20, X13Theme.TextSecondary, FontStyle.Normal, TextAnchor.MiddleCenter);
         }
 
         private void BuildHome(RectTransform root)
@@ -116,29 +127,47 @@ namespace SectorX13.UI
             X13UIBuilderRuntime.CreateHeader(root, "SECTOR X-13", "AR CHEMISTRY SYSTEM", ModeBadge, showBack: false, onBack: null);
             var body = X13UIBuilderRuntime.CreateScrollBody(root, X13Theme.HeaderHeight, X13Theme.BottomNavHeight);
 
-            var greet = X13UIBuilderRuntime.CreateCard(body, "GreetingCard", X13Theme.BackgroundNavy, X13Theme.BackgroundNavy);
-            X13UIBuilderRuntime.CreateText(greet, "Welcome", "RESEARCHER WORKSPACE", 24, X13Theme.CyanAccent, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(greet, "Headline", "Ready to explore\n<color=#05D9F5>the unseen?</color>", 52, X13Theme.TextPrimary, FontStyle.Bold);
+            var heroRow = X13UIBuilderRuntime.CreateRow(body, "HeroRow", 16f);
+            var heroLeft = new GameObject("HeroLeft", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(LayoutElement));
+            heroLeft.transform.SetParent(heroRow, false);
+            heroLeft.GetComponent<LayoutElement>().flexibleWidth = 1f;
+            var hlVlg = heroLeft.GetComponent<VerticalLayoutGroup>();
+            hlVlg.spacing = 8f;
+            hlVlg.childControlWidth = true;
+            hlVlg.childControlHeight = true;
+            X13UIBuilderRuntime.CreateText(heroLeft.transform, "Welcome", "GOOD MORNING, RESEARCHER", 22, X13Theme.CyanAccent, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateText(heroLeft.transform, "Headline", "Ready to explore\n<color=#05D9F5>the unseen?</color>", 50, X13Theme.TextPrimary, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateAtomIcon(heroRow, "HomeAtom", 148f);
 
-            var startCard = X13UIBuilderRuntime.CreateCard(body, "StartExperimentCard", X13Theme.CardSurface, X13Theme.CyanAccent);
-            X13UIBuilderRuntime.CreateText(startCard, "Tag", "NEW SESSION", 22, X13Theme.CyanAccent, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(startCard, "Desc", "Select two reagents for predefined scenario safety assessment.", 26, X13Theme.TextSecondary);
-            X13UIBuilderRuntime.CreateButton(startCard, "StartExperimentBtn", "START EXPERIMENT  ->", X13Theme.ButtonPrimaryBg, X13Theme.TextDark, () => Navigate(X13SceneIds.ChemicalSelection), 96f, 32);
+            var startCard = X13UIBuilderRuntime.CreateCard(body, "StartExperimentCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
+            X13UIBuilderRuntime.CreateText(startCard, "Tag", "NEW SESSION", 21, X13Theme.CyanAccent, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateButton(startCard, "StartExperimentBtn", "START EXPERIMENT  ->", X13Theme.CardSurface, X13Theme.CyanAccent, () => Navigate(X13SceneIds.ChemicalSelection), 72f, 34);
+            X13UIBuilderRuntime.CreateText(startCard, "Desc", "Configure a virtual reaction", 24, X13Theme.TextSecondary);
 
             var libCard = X13UIBuilderRuntime.CreateCard(body, "LibraryCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(libCard, "Tag", "CHEMICAL LIBRARY", 22, X13Theme.CyanAccent, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(libCard, "Desc", "Browse reviewed reference profiles, hazards, and SDS summaries.", 26, X13Theme.TextSecondary);
-            X13UIBuilderRuntime.CreateButton(libCard, "OpenLibraryBtn", "OPEN CHEMICAL LIBRARY", X13Theme.ButtonSecondaryBg, X13Theme.CyanAccent, () => Navigate(X13SceneIds.ChemicalLibrary), 88f, 28);
+            X13UIBuilderRuntime.CreateButton(libCard, "OpenLibraryBtn", "CHEMICAL LIBRARY\n<size=22><color=#8FA8B8>10 reference profiles</color></size>", X13Theme.CardSurface, X13Theme.CyanAccent, () => Navigate(X13SceneIds.ChemicalLibrary), 108f, 26);
 
-            // Per specification: do NOT imply a completed or verified experiment when none exists.
+            // Per specification: never fabricate a completed/verified experiment when none exists.
+            var recentHeader = X13UIBuilderRuntime.CreateRow(body, "RecentHeader");
+            X13UIBuilderRuntime.CreateText(recentHeader, "Title", "RECENT EXPERIMENTS", 24, X13Theme.TextPrimary, FontStyle.Bold);
+
             var recentCard = X13UIBuilderRuntime.CreateCard(body, "RecentExperimentCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(recentCard, "Tag", "RECENT EXPERIMENTS", 22, X13Theme.TextSecondary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(recentCard, "EmptyState", "No completed experiment in this session.", 28, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(recentCard, "EmptyHint", "All mixing is fail-closed until a reviewed scenario is assessed and authorized.", 24, X13Theme.TextSecondary);
+            if (ExperimentManager.Instance.HasCompletedScenario)
+            {
+                var exp = ExperimentManager.Instance.CurrentAssessment.BoundExperiment;
+                X13UIBuilderRuntime.CreateText(recentCard, "Tag", $"{exp.scenarioId} · VIRTUAL", 21, X13Theme.CyanAccent, FontStyle.Bold);
+                X13UIBuilderRuntime.CreateText(recentCard, "Title", exp.title, 28, X13Theme.TextPrimary, FontStyle.Bold);
+                X13UIBuilderRuntime.CreatePillBadge(recentCard, "RiskPill", exp.reviewedRiskCategory.ToString().ToUpperInvariant(), SafetyAssessmentView.GetRiskColor(exp.reviewedRiskCategory));
+            }
+            else
+            {
+                X13UIBuilderRuntime.CreateText(recentCard, "EmptyState", "No completed experiment in this session.", 26, X13Theme.TextPrimary, FontStyle.Bold);
+                X13UIBuilderRuntime.CreateText(recentCard, "EmptyHint", "All simulations fail closed until a reviewed scenario is assessed.", 22, X13Theme.TextSecondary);
+            }
 
             var safetyCard = X13UIBuilderRuntime.CreateCard(body, "SafetyNoticeCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(safetyCard, "Tag", "SAFETY PROTOCOL ACTIVE", 22, X13Theme.CyanAccent, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(safetyCard, "Desc", "Simulations are gated by exact scenario IDs and scientific review status. Not a chemical prediction engine.", 24, X13Theme.TextSecondary);
+            X13UIBuilderRuntime.CreateText(safetyCard, "Tag", "SAFETY PROTOCOL ACTIVE", 21, X13Theme.CyanAccent, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateText(safetyCard, "Desc", "All simulations are checked against experiment-specific presets.", 23, X13Theme.TextSecondary);
 
             X13UIBuilderRuntime.CreateBottomNav(root, 0, Navigate);
         }

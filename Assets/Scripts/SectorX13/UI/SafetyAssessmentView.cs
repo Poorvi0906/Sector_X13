@@ -28,16 +28,27 @@ namespace SectorX13.UI
 
             Color riskColor = GetRiskColor(result.Risk);
             var banner = X13UIBuilderRuntime.CreateCard(body, "RiskBanner", X13Theme.CardSurface, riskColor);
-            X13UIBuilderRuntime.CreateText(banner, "RiskBadge", $"RISK: {result.Risk.ToString().ToUpperInvariant()}  |  {result.StatusTitle}", 28, riskColor, FontStyle.Bold, TextAnchor.MiddleCenter);
-            X13UIBuilderRuntime.CreateText(banner, "ReviewStatus", $"Review Status: {result.ReviewStatus}", 22, X13Theme.TextSecondary, FontStyle.Bold, TextAnchor.MiddleCenter);
+            var atomRow = X13UIBuilderRuntime.CreateRow(banner, "AtomRow");
+            X13UIBuilderRuntime.CreateAtomIcon(atomRow, "SafetyAtom", 112f);
+            X13UIBuilderRuntime.CreatePillBadge(banner, "RiskPill", result.Risk.ToString().ToUpperInvariant(), riskColor);
+            X13UIBuilderRuntime.CreateText(banner, "RiskBadge", result.StatusTitle, 28, riskColor, FontStyle.Bold, TextAnchor.MiddleCenter);
+            X13UIBuilderRuntime.CreateText(banner, "ReviewStatus", $"Review Status: {result.ReviewStatus}", 21, X13Theme.TextSecondary, FontStyle.Bold, TextAnchor.MiddleCenter);
 
             var sel = ChemicalSelectionManager.Instance;
             var chemA = sel.GetChemicalA();
             var chemB = sel.GetChemicalB();
-            var pairCard = X13UIBuilderRuntime.CreateCard(body, "PairSummary", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(pairCard, "A", $"Reactant A: {(chemA != null ? $"{chemA.chemicalName} ({chemA.formula})" : "Not selected")}", 25, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(pairCard, "B", $"Reactant B: {(chemB != null ? $"{chemB.chemicalName} ({chemB.formula})" : "Not selected")}", 25, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(pairCard, "Cond", $"Fixed Conditions: {result.FixedConditions}", 23, X13Theme.TextSecondary);
+            var pairRow = X13UIBuilderRuntime.CreateRow(body, "PairRow", 16f);
+            var cardA = X13UIBuilderRuntime.CreateCard(pairRow, "ReactantACard", X13Theme.CardSurface, X13Theme.BorderSubtle);
+            X13UIBuilderRuntime.CreateText(cardA, "TagA", "REACTANT A", 20, X13Theme.CyanAccent, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateText(cardA, "ValA", chemA != null ? $"{chemA.formula}\n<size=21><color=#8FA8B8>{chemA.chemicalName}</color></size>" : "Not selected", 30, X13Theme.TextPrimary, FontStyle.Bold);
+
+            var cardB = X13UIBuilderRuntime.CreateCard(pairRow, "ReactantBCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
+            X13UIBuilderRuntime.CreateText(cardB, "TagB", "REACTANT B", 20, X13Theme.CyanAccent, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateText(cardB, "ValB", chemB != null ? $"{chemB.formula}\n<size=21><color=#8FA8B8>{chemB.chemicalName}</color></size>" : "Not selected", 30, X13Theme.TextPrimary, FontStyle.Bold);
+
+            var presetCard = X13UIBuilderRuntime.CreateCard(body, "PresetCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
+            X13UIBuilderRuntime.CreateText(presetCard, "Tag", "EXPERIMENT PRESET", 20, X13Theme.CyanAccent, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateText(presetCard, "Cond", result.FixedConditions, 23, X13Theme.TextPrimary);
 
             var rationaleCard = X13UIBuilderRuntime.CreateCard(body, "RationaleCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
             X13UIBuilderRuntime.CreateText(rationaleCard, "Heading", "SAFETY RATIONALE & CONTROLS", 22, X13Theme.CyanAccent, FontStyle.Bold);

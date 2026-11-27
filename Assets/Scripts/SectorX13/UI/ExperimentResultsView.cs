@@ -33,26 +33,29 @@ namespace SectorX13.UI
             }
             else
             {
-                var summaryCard = X13UIBuilderRuntime.CreateCard(body, "SummaryCard", X13Theme.CardSurface, X13Theme.CyanAccent);
-                X13UIBuilderRuntime.CreateText(summaryCard, "Title", exp.title, 28, X13Theme.TextPrimary, FontStyle.Bold);
-                X13UIBuilderRuntime.CreateText(summaryCard, "Meta", $"Scenario: {exp.scenarioId} · Risk: {exp.reviewedRiskCategory} · Review: {exp.reviewStatus}", 22, X13Theme.CyanAccent, FontStyle.Bold);
-                X13UIBuilderRuntime.CreateText(summaryCard, "Conditions", $"Fixed Conditions: {exp.fixedConditions}", 22, X13Theme.TextSecondary);
+                X13UIBuilderRuntime.CreateText(body, "CompleteCheck", "✓", 56, X13Theme.RiskLow, FontStyle.Bold, TextAnchor.MiddleCenter);
+                X13UIBuilderRuntime.CreateText(body, "CompleteTag", "SIMULATION COMPLETE", 22, X13Theme.RiskLow, FontStyle.Bold, TextAnchor.MiddleCenter);
+                X13UIBuilderRuntime.CreateText(body, "Title", exp.title, 36, X13Theme.TextPrimary, FontStyle.Bold, TextAnchor.MiddleCenter);
+                X13UIBuilderRuntime.CreatePillBadge(body, "RiskPill", exp.reviewedRiskCategory.ToString().ToUpperInvariant(), SafetyAssessmentView.GetRiskColor(exp.reviewedRiskCategory));
 
                 var eqCard = X13UIBuilderRuntime.CreateCard(body, "EquationCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-                X13UIBuilderRuntime.CreateText(eqCard, "Tag", "EQUATION & OBSERVATIONS (VIRTUAL MODEL)", 22, X13Theme.CyanAccent, FontStyle.Bold);
-                X13UIBuilderRuntime.CreateText(eqCard, "Equation", exp.equation, 26, X13Theme.TextPrimary, FontStyle.Bold);
-                X13UIBuilderRuntime.CreateText(eqCard, "Observations", exp.observations, 23, X13Theme.TextSecondary);
+                X13UIBuilderRuntime.CreateText(eqCard, "Tag", "BALANCED CHEMICAL EQUATION", 21, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
+                X13UIBuilderRuntime.CreateText(eqCard, "Equation", exp.equation, 30, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
+
+                var obsCard = X13UIBuilderRuntime.CreateCard(body, "ObsCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
+                X13UIBuilderRuntime.CreateText(obsCard, "Tag", "EXPECTED OBSERVATION", 21, X13Theme.CyanAccent, FontStyle.Bold);
+                X13UIBuilderRuntime.CreateText(obsCard, "Observations", exp.observations, 23, X13Theme.TextPrimary);
 
                 var eduCard = X13UIBuilderRuntime.CreateCard(body, "EducationalCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-                X13UIBuilderRuntime.CreateText(eduCard, "Tag", "SAFETY NOTES & EDUCATIONAL OUTCOME", 22, X13Theme.CyanAccent, FontStyle.Bold);
-                X13UIBuilderRuntime.CreateText(eduCard, "Safety", $"Safety Notes: {exp.safetyNotes}", 23, X13Theme.TextPrimary);
-                X13UIBuilderRuntime.CreateText(eduCard, "Outcome", $"Outcome: {exp.educationalOutcome}", 23, X13Theme.TextSecondary);
+                X13UIBuilderRuntime.CreateText(eduCard, "Tag", "SCIENTIFIC EXPLANATION & LIMITATIONS", 21, X13Theme.CyanAccent, FontStyle.Bold);
+                X13UIBuilderRuntime.CreateText(eduCard, "Outcome", exp.educationalOutcome, 23, X13Theme.TextPrimary);
+                X13UIBuilderRuntime.CreateText(eduCard, "Safety", $"Safety Notes: {exp.safetyNotes}", 22, X13Theme.TextSecondary);
             }
 
             X13UIBuilderRuntime.CreateButton(
                 body,
                 "NewExperimentBtn",
-                "RESET & NEW EXPERIMENT  ->",
+                "RESTART EXPERIMENT",
                 X13Theme.ButtonPrimaryBg,
                 X13Theme.TextDark,
                 () =>
@@ -61,7 +64,8 @@ namespace SectorX13.UI
                     navigate(X13SceneIds.ChemicalSelection);
                 },
                 92f,
-                28);
+                28,
+                primaryGradient: true);
 
             X13UIBuilderRuntime.CreateButton(
                 body,
