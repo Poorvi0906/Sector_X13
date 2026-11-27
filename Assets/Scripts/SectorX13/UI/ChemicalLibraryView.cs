@@ -39,10 +39,17 @@ namespace SectorX13.UI
             var catalogue = db.GetCatalogue(includeSynthetic: false);
             var activeChem = sel.GetInspectedChemical() ?? (catalogue.Count > 0 ? catalogue[0] : null);
 
+            // Molecular model hero card matching 03_Chemical_Library reference
+            var modelCard = X13UIBuilderRuntime.CreateCard(body, "ModelCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
+            var atomRow = X13UIBuilderRuntime.CreateRow(modelCard, "AtomWrap");
+            X13UIBuilderRuntime.CreateAtomIcon(atomRow, "ModelAtom", 150f);
+            var modelFormula = X13UIBuilderRuntime.CreateText(modelCard, "ModelFormula", "", 28, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
+            X13UIBuilderRuntime.CreateText(modelCard, "ModelCaption", "INTERACTIVE MOLECULAR MODEL", 20, X13Theme.TextSecondary, FontStyle.Bold, TextAnchor.MiddleCenter);
+
             // Profile card with 6 information sections
             var profileCard = X13UIBuilderRuntime.CreateCard(body, "ProfileCard", X13Theme.CardSurface, X13Theme.CyanAccent);
-            var chemTitle = X13UIBuilderRuntime.CreateText(profileCard, "ChemTitle", "", 36, X13Theme.TextPrimary, FontStyle.Bold);
-            var chemSub = X13UIBuilderRuntime.CreateText(profileCard, "ChemSub", "", 24, X13Theme.CyanAccent, FontStyle.Bold);
+            var chemSub = X13UIBuilderRuntime.CreateText(profileCard, "ChemSub", "", 22, X13Theme.CyanAccent, FontStyle.Bold);
+            var chemTitle = X13UIBuilderRuntime.CreateText(profileCard, "ChemTitle", "", 40, X13Theme.TextPrimary, FontStyle.Bold);
             var sectionHeader = X13UIBuilderRuntime.CreateText(profileCard, "SectionHeader", "", 22, X13Theme.CyanAccent, FontStyle.Bold);
             var sectionBody = X13UIBuilderRuntime.CreateText(profileCard, "SectionBody", "", 24, X13Theme.TextSecondary);
 
@@ -55,8 +62,9 @@ namespace SectorX13.UI
                 activeTab = tab;
                 sel.InspectChemical(chem.chemicalId);
 
-                chemTitle.text = $"{chem.chemicalName} ({chem.formula})";
-                chemSub.text = $"{chem.chemicalId} · {chem.category} · Review: {chem.reviewStatus}";
+                modelFormula.text = chem.formula;
+                chemTitle.text = $"{chem.chemicalName}  <color=#05D9F5>{chem.formula}</color>";
+                chemSub.text = $"{chem.category.ToUpperInvariant()} · {chem.chemicalId} · {chem.reviewStatus}";
                 sectionHeader.text = $"[{tab + 1}/6] {SectionTitles[tab].ToUpperInvariant()}";
                 sectionBody.text = GetSectionContent(chem, tab);
             }

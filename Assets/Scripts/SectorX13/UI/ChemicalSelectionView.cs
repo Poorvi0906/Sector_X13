@@ -18,10 +18,17 @@ namespace SectorX13.UI
             var db = ChemicalDatabase.Load();
             var sel = ChemicalSelectionManager.Instance;
 
-            var slotsCard = X13UIBuilderRuntime.CreateCard(body, "SlotsCard", X13Theme.CardSurface, X13Theme.CyanAccent);
-            var slotAText = X13UIBuilderRuntime.CreateText(slotsCard, "SlotA", "", 28, X13Theme.TextPrimary, FontStyle.Bold);
-            var slotBText = X13UIBuilderRuntime.CreateText(slotsCard, "SlotB", "", 28, X13Theme.TextPrimary, FontStyle.Bold);
-            var scenarioPreview = X13UIBuilderRuntime.CreateText(slotsCard, "ScenarioPreview", "", 23, X13Theme.TextSecondary);
+            var slotRow = X13UIBuilderRuntime.CreateRow(body, "SlotRow", 16f);
+            var slotACard = X13UIBuilderRuntime.CreateCard(slotRow, "SlotACard", X13Theme.CardSurface, X13Theme.CyanAccent);
+            X13UIBuilderRuntime.CreateText(slotACard, "LabelA", "CHEMICAL A", 20, X13Theme.TextSecondary, FontStyle.Bold);
+            var slotAText = X13UIBuilderRuntime.CreateText(slotACard, "SlotA", "Not selected", 30, X13Theme.CyanAccent, FontStyle.Bold);
+
+            var slotBCard = X13UIBuilderRuntime.CreateCard(slotRow, "SlotBCard", X13Theme.CardSurface, X13Theme.CyanAccent);
+            X13UIBuilderRuntime.CreateText(slotBCard, "LabelB", "CHEMICAL B", 20, X13Theme.TextSecondary, FontStyle.Bold);
+            var slotBText = X13UIBuilderRuntime.CreateText(slotBCard, "SlotB", "Not selected", 30, X13Theme.CyanAccent, FontStyle.Bold);
+
+            var slotsCard = X13UIBuilderRuntime.CreateCard(body, "SlotsControlCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
+            var scenarioPreview = X13UIBuilderRuntime.CreateText(slotsCard, "ScenarioPreview", "", 22, X13Theme.TextSecondary);
 
             bool selectingSlotA = true;
 
@@ -51,7 +58,8 @@ namespace SectorX13.UI
                     }
                 },
                 96f,
-                28);
+                28,
+                primaryGradient: true);
 
             void RefreshUI()
             {
@@ -105,30 +113,34 @@ namespace SectorX13.UI
                 var listCard = X13UIBuilderRuntime.CreateCard(body, "SelectionList", X13Theme.CardSurface, X13Theme.BorderSubtle);
                 X13UIBuilderRuntime.CreateText(listCard, "Heading", $"AVAILABLE REAGENTS ({catalogue.Count})", 24, X13Theme.CyanAccent, FontStyle.Bold);
 
-                foreach (var chem in catalogue)
+                for (int i = 0; i < catalogue.Count; i += 2)
                 {
-                    var captured = chem;
-                    X13UIBuilderRuntime.CreateButton(
-                        listCard,
-                        $"Pick_{captured.chemicalId}",
-                        $"{captured.formula}  —  {captured.chemicalName}",
-                        X13Theme.CardElevated,
-                        X13Theme.TextPrimary,
-                        () =>
-                        {
-                            if (selectingSlotA)
+                    var row = X13UIBuilderRuntime.CreateRow(listCard, $"GridRow_{i}", 12f);
+                    for (int col = 0; col < 2 && (i + col) < catalogue.Count; col++)
+                    {
+                        var captured = catalogue[i + col];
+                        X13UIBuilderRuntime.CreateButton(
+                            row,
+                            $"Pick_{captured.chemicalId}",
+                            $"<size=18><color=#8FA8B8>{captured.category.ToUpperInvariant()}</color></size>\n<size=28><color=#05D9F5>{captured.formula}</color></size>\n<size=21>{captured.chemicalName}</size>",
+                            X13Theme.CardElevated,
+                            X13Theme.TextPrimary,
+                            () =>
                             {
-                                sel.SelectChemicalA(captured.chemicalId);
-                                selectingSlotA = false;
-                            }
-                            else
-                            {
-                                sel.SelectChemicalB(captured.chemicalId);
-                            }
-                            RefreshUI();
-                        },
-                        76f,
-                        23);
+                                if (selectingSlotA)
+                                {
+                                    sel.SelectChemicalA(captured.chemicalId);
+                                    selectingSlotA = false;
+                                }
+                                else
+                                {
+                                    sel.SelectChemicalB(captured.chemicalId);
+                                }
+                                RefreshUI();
+                            },
+                            132f,
+                            22);
+                    }
                 }
             }
 
