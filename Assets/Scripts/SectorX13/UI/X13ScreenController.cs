@@ -25,8 +25,10 @@ namespace SectorX13.UI
 
         private void Awake()
         {
-            // Ensure persistent navigation controller exists even when launching any scene directly in Editor.
+            // Ensure persistent managers exist even when launching any scene directly in Editor.
             _ = SceneNavigationController.Instance;
+            _ = ChemicalSelectionManager.Instance;
+            _ = ExperimentManager.Instance;
             EnsureMainCamera();
         }
 
@@ -153,17 +155,7 @@ namespace SectorX13.UI
 
         private void BuildSafetyAssessment(RectTransform root)
         {
-            X13UIBuilderRuntime.CreateHeader(root, "SAFETY ASSESSMENT", "FAIL-CLOSED GATE", ModeBadge, showBack: true, onBack: GoBack);
-            var body = X13UIBuilderRuntime.CreateScrollBody(root, X13Theme.HeaderHeight, X13Theme.BottomNavHeight);
-
-            var banner = X13UIBuilderRuntime.CreateCard(body, "RiskBanner", X13Theme.CardSurface, X13Theme.RiskUnknown);
-            X13UIBuilderRuntime.CreateText(banner, "Badge", "RISK: UNKNOWN · NOT VERIFIED", 28, X13Theme.RiskUnknown, FontStyle.Bold, TextAnchor.MiddleCenter);
-            X13UIBuilderRuntime.CreateText(banner, "Msg", "No assessed scenario is currently active. Mixing is blocked in normal mode until a reviewed scenario is selected and evaluated.", 24, X13Theme.TextSecondary, FontStyle.Normal, TextAnchor.MiddleCenter);
-
-            X13UIBuilderRuntime.CreateButton(body, "OpenAdvisorBtn", "OPEN SAFETY ADVISOR", X13Theme.ButtonSecondaryBg, X13Theme.CyanAccent, () => Navigate(X13SceneIds.SafetyAdvisor), 88f, 28);
-            X13UIBuilderRuntime.CreateButton(body, "ReselectBtn", "RESELECT CHEMICALS", X13Theme.ButtonSecondaryBg, X13Theme.TextPrimary, () => Navigate(X13SceneIds.ChemicalSelection), 88f, 28);
-
-            X13UIBuilderRuntime.CreateBottomNav(root, 3, Navigate);
+            SafetyAssessmentView.Build(root, Navigate, GoBack);
         }
 
         private void BuildSafetyAdvisor(RectTransform root)
