@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93682bcfb93395409dd956ed4719159, type: 3}
+  m_Name: CH-09
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ChemicalData
+  chemicalId: CH-09
+  chemicalName: Sodium Bicarbonate
+  formula: NaHCO3
+  category: Carbonate Salt
+  physicalForm: White crystalline solid / dilute aqueous solution
+  propertiesSummary: Amphoteric hydrogen carbonate salt; releases CO2 upon reaction
+    with acids.
+  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
+    physical use."
+  hazardInfo: Gas evolution (CO2) pressure hazard if mixed with acid in a sealed
+    container.
+  precautions: Always use open vessels; wear eye protection.
+  reviewStatus: 0
+  supportedScenarioIds:
+  - EXP-01
+  fixedConditionsNote: "Candidate EXP-01 (with Acetic Acid) \u2014 awaiting scientific
+    review."
+  arVisualDescription: Aqueous carbonate reagent in Beaker B.
+  visualAssetId: beaker_liquid_clear
+  liquidColor: {r: 0.4, g: 0.9019608, b: 0.83137256, a: 1}
+  riskAssessmentSummary: Pending scientific review. Blocked in normal mode.
+  isSyntheticTestRecord: 0

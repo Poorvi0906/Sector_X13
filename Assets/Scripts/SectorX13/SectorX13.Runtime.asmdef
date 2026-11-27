@@ -1,0 +1,20 @@
+{
+  "name": "SectorX13.Runtime",
+  "rootNamespace": "SectorX13",
+  "references": [
+    "Unity.InputSystem",
+    "UnityEngine.UI",
+    "Unity.XR.ARFoundation",
+    "Unity.XR.ARSubsystems",
+    "Unity.XR.CoreUtils"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

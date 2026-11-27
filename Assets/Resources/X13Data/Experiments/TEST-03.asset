@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58fac425f33914a9164dc9c5a83c88, type: 3}
+  m_Name: TEST-03
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
+  scenarioId: TEST-03
+  title: "TEST ONLY \u2014 High Risk Fixture"
+  chemicalAId: TEST-A
+  chemicalBId: TEST-D
+  fixedConcentrationA: TEST 1.0 M
+  fixedQuantityA: 10 mL
+  fixedConcentrationB: TEST 1.0 M
+  fixedQuantityB: 10 mL
+  fixedConditions: TEST ONLY synthetic high-risk fixture.
+  reviewedRiskCategory: 3
+  reviewStatus: 3
+  reviewEvidence: TEST_ONLY_QA_FIXTURE_V1
+  dataVersion: test-1.0.0
+  controls:
+  - 'BLOCKED: High-risk virtual restriction'
+  rationale: TEST ONLY synthetic record verifying HIGH risk block and Smart Safety
+    Advisor.
+  observations: "Blocked \u2014 no simulation permitted."
+  equation: BLOCKED (TEST ONLY)
+  effectId: blocked
+  safetyNotes: 'TEST ONLY: High-risk scenario must always block mixing.'
+  educationalOutcome: Verifies HIGH risk block and advisor routing.
+  alternativeIds:
+  - ALT-TEST-01
+  isSyntheticTestRecord: 1
