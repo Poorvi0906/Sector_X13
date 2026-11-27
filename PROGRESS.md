@@ -3,7 +3,7 @@
 | Phase | Branch | Status | Notes |
 | :--- | :--- | :--- | :--- |
 | Baseline | `main` (`v0.0.0-baseline`) | Done | Existing project committed with `.gitignore` |
-| Phase 1 — Audit & Env | `feature/phase-01-audit-env` | In Progress | Git & docs ready; waiting for Unity Editor to close for CLI batchmode check |
+| Phase 1 — Audit & Env | `feature/phase-01-audit-env` | Done | Git baseline (`v0.0.0-baseline`), `develop`, and Unity CLI batchmode verified (exit code 0, 0 compile errors) |
 | Phase 2 — UI/UX & Navigation | `feature/phase-02-ui-navigation` | Pending | — |
 | Phase 3 — Chemical Database | `feature/phase-03-chemical-database` | Pending | — |
 | Phase 4 — Risk & Safety Engine | `feature/phase-04-safety-engine` | Pending | — |

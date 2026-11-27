@@ -4,3 +4,4 @@
 - Initialized Git repository on `main` aligned with `origin/main`.
 - Added Unity `.gitignore` preserving `.meta` files, `Assets/`, `Packages/`, and `ProjectSettings/`.
 - Added initial project tracking documentation (`README.md`, `PROJECT_ANALYSIS.md`, `IMPLEMENTATION_PLAN.md`, `PROGRESS.md`, `TEST_REPORT.md`, `KNOWN_ISSUES.md`).
+- Verified Unity 6000.3.28f1 CLI `-batchmode` compilation (0 errors, exit code 0).
