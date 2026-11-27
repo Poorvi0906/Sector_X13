@@ -19,21 +19,20 @@ MonoBehaviour:
   physicalForm: Clear, colourless dilute aqueous solution (5% v/v)
   propertiesSummary: Weak monoprotic carboxylic acid; characteristic vinegar odour;
     miscible with water.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: Concentrated acetic acid is corrosive; dilute 5% models may cause mild
     eye/skin irritation.
   precautions: Wear splash goggles, lab coat, and nitrile gloves. Avoid eye contact.
-  reviewStatus: 0
+  reviewStatus: 1
   supportedScenarioIds:
   - EXP-01
-  fixedConditionsNote: "Candidate EXP-01 (with Sodium Bicarbonate) \u2014 awaiting
-    scientific review."
-  arVisualDescription: Clear aqueous reagent in Beaker A; effervescence model when
-    authorized.
+  - EXP-04
+  fixedConditionsNote: EXP-01 (with NaHCO3, LOW) and EXP-04 (with Mg(OH)2, LOW).
+  arVisualDescription: Clear aqueous reagent in Beaker A; gentle effervescence model
+    in EXP-01.
   visualAssetId: beaker_liquid_clear
   liquidColor: {r: 0.15686275, g: 0.78039217, b: 0.9098039, a: 1}
-  riskAssessmentSummary: Pending scientific review. Mixing blocked in normal mode
-    until approved.
+  riskAssessmentSummary: LOW risk in reviewed dilute presets EXP-01 and EXP-04.
   isSyntheticTestRecord: 0

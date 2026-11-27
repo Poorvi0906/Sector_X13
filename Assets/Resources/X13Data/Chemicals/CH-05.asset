@@ -18,18 +18,19 @@ MonoBehaviour:
   category: Strong Base
   physicalForm: Clear aqueous solution (0.10 M)
   propertiesSummary: Strong alkali base; completely dissociated in aqueous solution.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: Corrosive stock chemical; severe skin and eye burn hazard.
   precautions: Splash goggles, lab coat, nitrile gloves required.
-  reviewStatus: 0
+  reviewStatus: 1
   supportedScenarioIds:
   - EXP-02
-  fixedConditionsNote: "Candidate EXP-02 (10 mL 0.10 M NaOH + 10 mL 0.10 M HCl) \u2014
-    awaiting scientific review."
+  - EXP-07
+  fixedConditionsNote: EXP-02 (with 0.10 M HCl, MEDIUM) and EXP-07 (with H2SO4, HIGH).
   arVisualDescription: Clear aqueous base in Beaker B.
   visualAssetId: beaker_liquid_base
   liquidColor: {r: 0.12156863, g: 0.9411765, b: 0.72156864, a: 1}
-  riskAssessmentSummary: Pending scientific review. Blocked in normal mode.
+  riskAssessmentSummary: MEDIUM risk with dilute HCl (EXP-02); HIGH risk with H2SO4
+    (EXP-07).
   isSyntheticTestRecord: 0

@@ -19,19 +19,21 @@ MonoBehaviour:
   physicalForm: White crystalline solid / dilute aqueous solution
   propertiesSummary: Amphoteric hydrogen carbonate salt; releases CO2 upon reaction
     with acids.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: Gas evolution (CO2) pressure hazard if mixed with acid in a sealed
     container.
   precautions: Always use open vessels; wear eye protection.
-  reviewStatus: 0
+  reviewStatus: 1
   supportedScenarioIds:
   - EXP-01
-  fixedConditionsNote: "Candidate EXP-01 (with Acetic Acid) \u2014 awaiting scientific
-    review."
+  - EXP-09
+  fixedConditionsNote: EXP-01 (with 5% Acetic Acid, LOW) and EXP-09 (with H2SO4,
+    HIGH).
   arVisualDescription: Aqueous carbonate reagent in Beaker B.
   visualAssetId: beaker_liquid_clear
   liquidColor: {r: 0.4, g: 0.9019608, b: 0.83137256, a: 1}
-  riskAssessmentSummary: Pending scientific review. Blocked in normal mode.
+  riskAssessmentSummary: LOW risk with Acetic Acid (EXP-01); HIGH risk with H2SO4
+    (EXP-09).
   isSyntheticTestRecord: 0

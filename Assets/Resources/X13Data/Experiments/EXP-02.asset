@@ -13,29 +13,29 @@ MonoBehaviour:
   m_Name: EXP-02
   m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
   scenarioId: EXP-02
-  title: 'Dilute Neutralisation: HCl + NaOH (Candidate)'
+  title: 'Dilute Neutralisation: HCl + NaOH'
   chemicalAId: CH-02
   chemicalBId: CH-05
   fixedConcentrationA: 0.10 M
   fixedQuantityA: 10 mL
   fixedConcentrationB: 0.10 M
   fixedQuantityB: 10 mL
-  fixedConditions: 10 mL 0.10 M HCl + 10 mL 0.10 M NaOH, ambient temperature. Candidate
-    only; awaiting review.
-  reviewedRiskCategory: 0
-  reviewStatus: 0
-  reviewEvidence: Pending scientific review
-  dataVersion: 0.1.0-pending
+  fixedConditions: 10 mL 0.10 M HCl + 10 mL 0.10 M NaOH, ambient 22 C.
+  reviewedRiskCategory: 2
+  reviewStatus: 1
+  reviewEvidence: X13-REV-2026-02
+  dataVersion: 1.0.0
   controls:
   - Splash goggles
   - Lab coat
   - Nitrile gloves
-  rationale: Instructor review pending. Per fail-closed specification, pending records
-    must remain UNKNOWN and blocked.
-  observations: Pending review.
-  equation: HCl + NaOH -> NaCl + H2O (unreviewed)
+  rationale: Virtual simulation only. Dilute 0.10 M strong acid-base neutralisation;
+    both stock chemicals remain corrosive hazards.
+  observations: No strong visual change; small exothermic temperature rise occurs.
+  equation: HCl + NaOH -> NaCl + H2O
   effectId: neutralisation_glow
-  safetyNotes: Both stock reagents are corrosive.
-  educationalOutcome: Pending scientific review.
+  safetyNotes: Both stock reagents are corrosive; virtual acknowledgement required.
+  educationalOutcome: Idealised strong acid-strong base neutralisation forming aqueous
+    salt and water.
   alternativeIds: []
   isSyntheticTestRecord: 0

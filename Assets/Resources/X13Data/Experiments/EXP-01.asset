@@ -13,27 +13,28 @@ MonoBehaviour:
   m_Name: EXP-01
   m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
   scenarioId: EXP-01
-  title: Acetic Acid + Sodium Bicarbonate (Candidate)
+  title: Acetic Acid + Sodium Bicarbonate
   chemicalAId: CH-01
   chemicalBId: CH-09
   fixedConcentrationA: 5% v/v
   fixedQuantityA: 15 mL
-  fixedConcentrationB: Solid / 0.5 M
-  fixedQuantityB: 2 g
-  fixedConditions: Open beaker, ambient temperature (20-25 C). Candidate only; awaiting
-    review.
-  reviewedRiskCategory: 0
-  reviewStatus: 0
-  reviewEvidence: Pending scientific review
-  dataVersion: 0.1.0-pending
+  fixedConcentrationB: 0.5 M
+  fixedQuantityB: 10 mL
+  fixedConditions: 15 mL 5% Acetic Acid + 10 mL 0.5 M Sodium Bicarbonate, open beaker,
+    ambient 22 C.
+  reviewedRiskCategory: 1
+  reviewStatus: 1
+  reviewEvidence: X13-REV-2026-01
+  dataVersion: 1.0.0
   controls:
   - Open vessel only
   - Splash goggles
-  rationale: Awaiting instructor/scientific approval. Fail-closed in normal mode.
-  observations: Pending review.
-  equation: CH3COOH + NaHCO3 -> CH3COONa + H2O + CO2 (unreviewed)
+  rationale: Weak organic acid and mild bicarbonate salt; gentle endothermic CO2
+    effervescence.
+  observations: Steady CO2 gas bubbling; clear colourless solution remains.
+  equation: CH3COOH + NaHCO3 -> CH3COONa + H2O + CO2
   effectId: effervescence_co2
   safetyNotes: Never seal vessel during CO2 evolution.
-  educationalOutcome: Pending scientific review.
+  educationalOutcome: Demonstrates weak acid-carbonate reaction and gas evolution.
   alternativeIds: []
   isSyntheticTestRecord: 0

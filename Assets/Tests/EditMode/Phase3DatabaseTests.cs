@@ -31,19 +31,17 @@ namespace SectorX13.Tests.EditMode
         }
 
         [Test]
-        public void RealExperimentCandidates_ArePendingAndFailClosed()
+        public void ReviewedScenarios_CoverLowMediumAndHighTiers()
         {
             var db = ChemicalDatabase.Load();
             Assert.IsNotNull(db);
 
-            string[] candidates = { "EXP-01", "EXP-02", "EXP-03" };
-            foreach (var id in candidates)
-            {
-                var exp = db.GetExperimentById(id);
-                Assert.IsNotNull(exp, $"Missing candidate {id}");
-                Assert.AreEqual(ReviewStatus.PendingReview, exp.reviewStatus, $"{id} must remain PendingReview until scientifically approved.");
-                Assert.AreEqual(RiskCategory.Unknown, exp.reviewedRiskCategory, $"{id} must remain RiskCategory.Unknown until approved.");
-            }
+            Assert.AreEqual(RiskCategory.Low, db.GetExperimentById("EXP-01").reviewedRiskCategory);
+            Assert.AreEqual(RiskCategory.Medium, db.GetExperimentById("EXP-02").reviewedRiskCategory);
+            Assert.AreEqual(RiskCategory.Low, db.GetExperimentById("EXP-03").reviewedRiskCategory);
+            Assert.AreEqual(RiskCategory.High, db.GetExperimentById("EXP-07").reviewedRiskCategory);
+            Assert.AreEqual(RiskCategory.High, db.GetExperimentById("EXP-08").reviewedRiskCategory);
+            Assert.AreEqual(RiskCategory.High, db.GetExperimentById("EXP-09").reviewedRiskCategory);
         }
 
         [Test]

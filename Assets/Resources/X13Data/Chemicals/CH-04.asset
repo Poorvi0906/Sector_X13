@@ -16,20 +16,25 @@ MonoBehaviour:
   chemicalName: Sulfuric Acid
   formula: H2SO4
   category: Mineral Acid
-  physicalForm: Aqueous mineral acid solution
+  physicalForm: Strong diprotic mineral acid (1.0 M stock)
   propertiesSummary: Strong diprotic mineral acid; strongly exothermic hydration
-    and dehydration hazard.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+    and neutralisation.
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
-  hazardInfo: Severe corrosive hazard; exothermic reaction with bases and water.
-  precautions: Full PPE, fume hood, and strict instructor control required; never
-    add water to concentrated acid.
-  reviewStatus: 0
-  supportedScenarioIds: []
-  fixedConditionsNote: No finalized virtual scenario.
-  arVisualDescription: Clear dense aqueous solution in Beaker A.
+  hazardInfo: Severe corrosive hazard; violent exothermic reaction with strong bases
+    and carbonates.
+  precautions: Blocked in standard virtual lab; use Smart Safety Advisor for safer
+    alternatives.
+  reviewStatus: 1
+  supportedScenarioIds:
+  - EXP-07
+  - EXP-08
+  - EXP-09
+  fixedConditionsNote: "EXP-07 (NaOH, HIGH), EXP-08 (KOH, HIGH), EXP-09 (NaHCO3,
+    HIGH) \u2014 all blocked."
+  arVisualDescription: Dense aqueous acid in Beaker A (blocked in HIGH risk scenarios).
   visualAssetId: beaker_liquid_acid
   liquidColor: {r: 0.27058825, g: 0.72156864, b: 0.9019608, a: 1}
-  riskAssessmentSummary: Not assessed for virtual mixing. Blocked in normal mode.
+  riskAssessmentSummary: HIGH risk / DANGER in EXP-07, EXP-08, EXP-09. Mixing blocked.
   isSyntheticTestRecord: 0

@@ -19,18 +19,17 @@ MonoBehaviour:
   physicalForm: White solid / aqueous suspension
   propertiesSummary: Insoluble carbonate mineral salt; reacts with acids to produce
     CO2 gas.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: CO2 gas evolution with acids; mild dust irritation.
   precautions: Use open vessel and eye protection.
-  reviewStatus: 0
+  reviewStatus: 1
   supportedScenarioIds:
   - EXP-03
-  fixedConditionsNote: "Candidate EXP-03 (with Citric Acid) \u2014 awaiting scientific
-    review."
+  fixedConditionsNote: EXP-03 (with 0.10 M Citric Acid, LOW).
   arVisualDescription: Pale suspension in Beaker B.
   visualAssetId: beaker_liquid_cloudy
   liquidColor: {r: 0.72156864, g: 0.93333334, b: 0.9607843, a: 1}
-  riskAssessmentSummary: Pending scientific review. Blocked in normal mode.
+  riskAssessmentSummary: LOW risk in EXP-03 (with dilute Citric Acid).
   isSyntheticTestRecord: 0
