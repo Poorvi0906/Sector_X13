@@ -48,6 +48,8 @@ namespace SectorX13.Core
             }
         }
 
+        private bool _initialized;
+
         private void Awake()
         {
             if (_instance != null && _instance != this)
@@ -56,8 +58,14 @@ namespace SectorX13.Core
                 return;
             }
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (Application.isPlaying) DontDestroyOnLoad(gameObject);
+            EnsureInitialized();
+        }
 
+        public void EnsureInitialized()
+        {
+            if (_initialized) return;
+            _initialized = true;
             ChemicalSelectionManager.Instance.OnSelectionChanged += HandleSelectionChanged;
             SceneNavigationController.Instance.CanEnterScene = CanEnterScene;
         }

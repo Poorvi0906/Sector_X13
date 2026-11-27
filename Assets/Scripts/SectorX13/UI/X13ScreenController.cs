@@ -170,15 +170,7 @@ namespace SectorX13.UI
 
         private void BuildExperimentResults(RectTransform root)
         {
-            X13UIBuilderRuntime.CreateHeader(root, "EXPERIMENT RESULTS", "SUMMARY & OUTCOME", ModeBadge, showBack: true, onBack: GoBack);
-            var body = X13UIBuilderRuntime.CreateScrollBody(root, X13Theme.HeaderHeight, X13Theme.BottomNavHeight);
-
-            var card = X13UIBuilderRuntime.CreateCard(body, "ResultsCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(card, "Title", "No Completed Scenario", 32, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(card, "Body", "Results are displayed only after an authorized virtual simulation completes. No fabricated equations or measurements are shown.", 25, X13Theme.TextSecondary);
-            X13UIBuilderRuntime.CreateButton(card, "ResetHomeBtn", "RESET & RETURN HOME", X13Theme.ButtonPrimaryBg, X13Theme.TextDark, () => SceneNavigationController.Instance.GoHome(clearHistory: true), 96f, 30);
-
-            X13UIBuilderRuntime.CreateBottomNav(root, 0, Navigate);
+            ExperimentResultsView.Build(root, Navigate, GoBack);
         }
     }
 }

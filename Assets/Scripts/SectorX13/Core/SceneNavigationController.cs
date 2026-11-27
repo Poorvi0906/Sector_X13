@@ -75,7 +75,10 @@ namespace SectorX13.Core
             }
 
             _currentScene = targetScene;
-            SceneManager.LoadScene(targetScene);
+            if (Application.isPlaying)
+            {
+                SceneManager.LoadScene(targetScene);
+            }
             return true;
         }
 
