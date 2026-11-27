@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647d5d2b8ed503a489de9262fe2a7545, type: 3}
+  m_Name: ALT-02
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.AlternativeLink
+  linkId: ALT-02
+  sourceScenarioId: EXP-08
+  sourceSelectionKey: CH-04+CH-06
+  targetScenarioId: EXP-05
+  reviewedRationale: Replaces Sulfuric Acid with dilute 0.10 M Hydrochloric Acid
+    + 0.10 M KOH (MEDIUM risk) under controlled conditions.
+  reviewEvidence: X13-ALT-2026-02
+  reviewStatus: 1
+  isSyntheticTestRecord: 0

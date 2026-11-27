@@ -34,7 +34,7 @@ namespace SectorX13.Tests.EditMode
         public void UnauthorizedLab_BlocksPourAndMix()
         {
             _sel.IncludeSyntheticTestRecords = false;
-            _sel.SelectPair("CH-02", "CH-05"); // PendingReview -> blocked
+            _sel.SelectPair("CH-04", "CH-05"); // HIGH risk -> blocked
             _exp.AssessCurrentSelection();
 
             Assert.IsFalse(_lab.TriggerPour());

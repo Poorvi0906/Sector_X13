@@ -16,18 +16,19 @@ MonoBehaviour:
   chemicalName: Magnesium Hydroxide
   formula: Mg(OH)2
   category: Base
-  physicalForm: Aqueous suspension
+  physicalForm: Aqueous suspension (milk of magnesia)
   propertiesSummary: Weakly soluble inorganic base suspension.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: Low acute hazard in dilute suspension; avoid eye contact.
   precautions: Standard laboratory eye protection and lab coat.
-  reviewStatus: 0
-  supportedScenarioIds: []
-  fixedConditionsNote: No finalized virtual scenario.
+  reviewStatus: 1
+  supportedScenarioIds:
+  - EXP-04
+  fixedConditionsNote: EXP-04 (with 5% Acetic Acid, LOW).
   arVisualDescription: Milky white suspension in Beaker B.
   visualAssetId: beaker_liquid_milky
   liquidColor: {r: 0.83137256, g: 0.93333334, b: 0.9607843, a: 1}
-  riskAssessmentSummary: Not assessed for virtual mixing. Blocked in normal mode.
+  riskAssessmentSummary: LOW risk in EXP-04 (with dilute Acetic Acid).
   isSyntheticTestRecord: 0

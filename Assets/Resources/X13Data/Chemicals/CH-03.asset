@@ -16,20 +16,20 @@ MonoBehaviour:
   chemicalName: Citric Acid
   formula: C6H8O7
   category: Organic Acid
-  physicalForm: Dilute aqueous solution / white crystalline solid
+  physicalForm: Dilute aqueous solution (0.10 M)
   propertiesSummary: Weak triprotic organic acid naturally occurring in citrus fruits.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
-  hazardInfo: Causes serious eye irritation in concentrated or solid dust form.
-  precautions: Wear safety goggles and avoid inhalation of solid dust.
-  reviewStatus: 0
+  hazardInfo: Causes mild to moderate eye irritation.
+  precautions: Wear safety goggles and avoid eye contact.
+  reviewStatus: 1
   supportedScenarioIds:
   - EXP-03
-  fixedConditionsNote: "Candidate EXP-03 (with Calcium Carbonate) \u2014 awaiting
-    scientific review."
+  - EXP-06
+  fixedConditionsNote: EXP-03 (with CaCO3, LOW) and EXP-06 (with Ca(OH)2, MEDIUM).
   arVisualDescription: Clear pale aqueous solution in Beaker A.
   visualAssetId: beaker_liquid_clear
   liquidColor: {r: 0.4862745, g: 0.9098039, b: 1, a: 1}
-  riskAssessmentSummary: Pending scientific review. Mixing blocked in normal mode.
+  riskAssessmentSummary: LOW risk with CaCO3 (EXP-03); MEDIUM risk with Ca(OH)2 (EXP-06).
   isSyntheticTestRecord: 0

@@ -28,11 +28,12 @@ namespace SectorX13.Tests.EditMode
         }
 
         [Test]
-        public void NormalMode_ReturnsNoAlternatives_ForUnreviewedPairs()
+        public void NormalMode_ReturnsReviewedAlternative_ForHighRiskPair()
         {
             var db = ChemicalDatabase.Load();
-            var list = SmartSafetyAdvisor.GetEligibleAlternatives(db, "EXP-02", "CH-02", "CH-05", allowSyntheticTestMode: false);
-            Assert.AreEqual(0, list.Count, "Pending/unreviewed pairs must not expose unreviewed alternatives in normal mode.");
+            var list = SmartSafetyAdvisor.GetEligibleAlternatives(db, "EXP-09", "CH-04", "CH-09", allowSyntheticTestMode: false);
+            Assert.AreEqual(1, list.Count);
+            Assert.AreEqual("EXP-01", list[0].TargetExperiment.scenarioId);
         }
 
         [Test]
