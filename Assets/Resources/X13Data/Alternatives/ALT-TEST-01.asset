@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647d5d2b8ed503a489de9262fe2a7545, type: 3}
+  m_Name: ALT-TEST-01
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.AlternativeLink
+  linkId: ALT-TEST-01
+  sourceScenarioId: TEST-03
+  sourceSelectionKey: TEST-A+TEST-D
+  targetScenarioId: TEST-01
+  reviewedRationale: 'TEST ONLY: Replaces high-risk TX-D with low-risk TX-B under
+    reviewed fixture conditions.'
+  reviewEvidence: TEST_ONLY_ADVISOR_LINK_V1
+  reviewStatus: 3
+  isSyntheticTestRecord: 1

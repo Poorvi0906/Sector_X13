@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93682bcfb93395409dd956ed4719159, type: 3}
+  m_Name: CH-06
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ChemicalData
+  chemicalId: CH-06
+  chemicalName: Potassium Hydroxide
+  formula: KOH
+  category: Strong Base
+  physicalForm: Aqueous alkaline solution
+  propertiesSummary: Strong caustic alkali; highly soluble in water with exothermic
+    dissolution.
+  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
+    physical use."
+  hazardInfo: Corrosive; causes severe skin burns and eye damage.
+  precautions: Splash goggles, lab coat, chemical-resistant gloves.
+  reviewStatus: 0
+  supportedScenarioIds: []
+  fixedConditionsNote: No finalized virtual scenario.
+  arVisualDescription: Clear aqueous solution in Beaker B.
+  visualAssetId: beaker_liquid_base
+  liquidColor: {r: 0.17254902, g: 0.8784314, b: 0.65882355, a: 1}
+  riskAssessmentSummary: Not assessed for virtual mixing. Blocked in normal mode.
+  isSyntheticTestRecord: 0

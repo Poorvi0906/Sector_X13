@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93682bcfb93395409dd956ed4719159, type: 3}
+  m_Name: CH-01
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ChemicalData
+  chemicalId: CH-01
+  chemicalName: Acetic Acid
+  formula: CH3COOH
+  category: Organic Acid
+  physicalForm: Clear, colourless dilute aqueous solution (5% v/v)
+  propertiesSummary: Weak monoprotic carboxylic acid; characteristic vinegar odour;
+    miscible with water.
+  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
+    physical use."
+  hazardInfo: Concentrated acetic acid is corrosive; dilute 5% models may cause mild
+    eye/skin irritation.
+  precautions: Wear splash goggles, lab coat, and nitrile gloves. Avoid eye contact.
+  reviewStatus: 0
+  supportedScenarioIds:
+  - EXP-01
+  fixedConditionsNote: "Candidate EXP-01 (with Sodium Bicarbonate) \u2014 awaiting
+    scientific review."
+  arVisualDescription: Clear aqueous reagent in Beaker A; effervescence model when
+    authorized.
+  visualAssetId: beaker_liquid_clear
+  liquidColor: {r: 0.15686275, g: 0.78039217, b: 0.9098039, a: 1}
+  riskAssessmentSummary: Pending scientific review. Mixing blocked in normal mode
+    until approved.
+  isSyntheticTestRecord: 0
