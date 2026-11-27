@@ -165,40 +165,7 @@ namespace SectorX13.UI
 
         private void BuildARLaboratoryHUD(RectTransform root)
         {
-            X13UIBuilderRuntime.CreateHeader(root, "AR VIRTUAL LAB", "SIMULATION HUD", ModeBadge, showBack: true, onBack: GoBack);
-
-            var statusWrap = new GameObject("SimStatusWrap", typeof(RectTransform));
-            statusWrap.transform.SetParent(root, false);
-            var swRt = statusWrap.GetComponent<RectTransform>();
-            swRt.anchorMin = new Vector2(0.15f, 0.76f);
-            swRt.anchorMax = new Vector2(0.85f, 0.85f);
-            swRt.offsetMin = Vector2.zero;
-            swRt.offsetMax = Vector2.zero;
-
-            var statusCard = X13UIBuilderRuntime.CreateCard(statusWrap.transform, "SimStatusCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            var scRt = statusCard;
-            scRt.anchorMin = Vector2.zero;
-            scRt.anchorMax = Vector2.one;
-            scRt.offsetMin = Vector2.zero;
-            scRt.offsetMax = Vector2.zero;
-            X13UIBuilderRuntime.CreateText(statusCard, "Label", "SIMULATION STATUS: READY", 26, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
-
-            var controlsWrap = new GameObject("LabControls", typeof(RectTransform), typeof(HorizontalLayoutGroup));
-            controlsWrap.transform.SetParent(root, false);
-            var cwRt = controlsWrap.GetComponent<RectTransform>();
-            cwRt.anchorMin = new Vector2(0.04f, 0.03f);
-            cwRt.anchorMax = new Vector2(0.96f, 0.13f);
-            cwRt.offsetMin = Vector2.zero;
-            cwRt.offsetMax = Vector2.zero;
-            var hlg = controlsWrap.GetComponent<HorizontalLayoutGroup>();
-            hlg.spacing = 16f;
-            hlg.childControlWidth = true;
-            hlg.childControlHeight = true;
-            hlg.childForceExpandWidth = true;
-
-            X13UIBuilderRuntime.CreateButton(controlsWrap.transform, "PourBtn", "POUR", X13Theme.ButtonSecondaryBg, X13Theme.CyanAccent, null, 96f, 28);
-            X13UIBuilderRuntime.CreateButton(controlsWrap.transform, "MixBtn", "MIX", X13Theme.ButtonSecondaryBg, X13Theme.CyanAccent, null, 96f, 28);
-            X13UIBuilderRuntime.CreateButton(controlsWrap.transform, "ResetBtn", "RESET", X13Theme.ButtonSecondaryBg, X13Theme.TextPrimary, () => Navigate(X13SceneIds.Home), 96f, 28);
+            ARLabHUDView.Build(root, Navigate, GoBack);
         }
 
         private void BuildExperimentResults(RectTransform root)
