@@ -29,14 +29,28 @@ namespace SectorX13.Tests.EditMode
         }
 
         [Test]
-        public void HCl_Plus_NaOH_FailsClosed_InNormalMode()
+        public void RealLowMediumHighCombinations_EvaluateCorrectly()
         {
             _sel.IncludeSyntheticTestRecords = false;
-            _sel.SelectPair("CH-02", "CH-05"); // HCl + NaOH (EXP-02 PendingReview)
-            var result = _exp.AssessCurrentSelection();
 
-            Assert.AreEqual(RiskCategory.Unknown, result.Risk, "Pending review HCl+NaOH must be UNKNOWN in normal mode.");
-            Assert.IsFalse(result.IsAuthorizedByRule);
+            // LOW: Acetic Acid + Sodium Bicarbonate (EXP-01)
+            _sel.SelectPair("CH-01", "CH-09");
+            var lowRes = _exp.AssessCurrentSelection();
+            Assert.AreEqual(RiskCategory.Low, lowRes.Risk);
+            Assert.IsTrue(_exp.VerifyAuthorizationForExecution());
+
+            // MEDIUM: HCl + NaOH (EXP-02) -> blocked until acknowledged
+            _sel.SelectPair("CH-02", "CH-05");
+            var medRes = _exp.AssessCurrentSelection();
+            Assert.AreEqual(RiskCategory.Medium, medRes.Risk);
+            Assert.IsFalse(_exp.VerifyAuthorizationForExecution());
+            Assert.IsTrue(_exp.AcknowledgeMediumRisk(medRes.ScenarioId, medRes.DataVersion));
+            Assert.IsTrue(_exp.VerifyAuthorizationForExecution());
+
+            // HIGH: Sulfuric Acid + NaOH (EXP-07) -> always blocked
+            _sel.SelectPair("CH-04", "CH-05");
+            var highRes = _exp.AssessCurrentSelection();
+            Assert.AreEqual(RiskCategory.High, highRes.Risk);
             Assert.IsFalse(_exp.VerifyAuthorizationForExecution());
             Assert.IsFalse(_exp.CanEnterScene(X13SceneIds.ARLaboratory));
         }
@@ -45,7 +59,7 @@ namespace SectorX13.Tests.EditMode
         public void MissingAndUnreviewedPairs_BlockExecution()
         {
             _sel.IncludeSyntheticTestRecords = false;
-            _sel.SelectPair("CH-04", "CH-06"); // Sulfuric + KOH (no scenario)
+            _sel.SelectPair("CH-01", "CH-02"); // Acetic + HCl (no scenario)
             var result = _exp.AssessCurrentSelection();
 
             Assert.AreEqual(RiskCategory.Unknown, result.Risk);

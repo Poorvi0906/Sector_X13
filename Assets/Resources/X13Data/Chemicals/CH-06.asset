@@ -16,19 +16,22 @@ MonoBehaviour:
   chemicalName: Potassium Hydroxide
   formula: KOH
   category: Strong Base
-  physicalForm: Aqueous alkaline solution
+  physicalForm: Aqueous alkaline solution (0.10 M)
   propertiesSummary: Strong caustic alkali; highly soluble in water with exothermic
-    dissolution.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+    neutralisation.
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: Corrosive; causes severe skin burns and eye damage.
   precautions: Splash goggles, lab coat, chemical-resistant gloves.
-  reviewStatus: 0
-  supportedScenarioIds: []
-  fixedConditionsNote: No finalized virtual scenario.
+  reviewStatus: 1
+  supportedScenarioIds:
+  - EXP-05
+  - EXP-08
+  fixedConditionsNote: EXP-05 (with 0.10 M HCl, MEDIUM) and EXP-08 (with H2SO4, HIGH).
   arVisualDescription: Clear aqueous solution in Beaker B.
   visualAssetId: beaker_liquid_base
   liquidColor: {r: 0.17254902, g: 0.8784314, b: 0.65882355, a: 1}
-  riskAssessmentSummary: Not assessed for virtual mixing. Blocked in normal mode.
+  riskAssessmentSummary: MEDIUM risk with dilute HCl (EXP-05); HIGH risk with H2SO4
+    (EXP-08).
   isSyntheticTestRecord: 0

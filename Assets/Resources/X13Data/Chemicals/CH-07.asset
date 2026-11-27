@@ -18,16 +18,17 @@ MonoBehaviour:
   category: Base
   physicalForm: Saturated aqueous suspension (limewater)
   propertiesSummary: Moderately soluble alkaline earth hydroxide.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: Causes skin irritation and serious eye damage.
   precautions: Eye protection and gloves required.
-  reviewStatus: 0
-  supportedScenarioIds: []
-  fixedConditionsNote: No finalized virtual scenario.
+  reviewStatus: 1
+  supportedScenarioIds:
+  - EXP-06
+  fixedConditionsNote: EXP-06 (with 0.10 M Citric Acid, MEDIUM).
   arVisualDescription: Slightly cloudy aqueous suspension in Beaker B.
   visualAssetId: beaker_liquid_cloudy
   liquidColor: {r: 0.61960787, g: 0.9098039, b: 0.9411765, a: 1}
-  riskAssessmentSummary: Not assessed for virtual mixing. Blocked in normal mode.
+  riskAssessmentSummary: MEDIUM risk in EXP-06 (with Citric Acid).
   isSyntheticTestRecord: 0

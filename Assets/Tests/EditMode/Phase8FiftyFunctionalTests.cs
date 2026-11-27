@@ -65,29 +65,29 @@ namespace SectorX13.Tests.EditMode
         [Test] public void TC_RSK_02_MediumBlocksBeforeAck() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-C"); _exp.AssessCurrentSelection(); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
         [Test] public void TC_RSK_03_MediumPermitsAfterAck() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-C"); var r = _exp.AssessCurrentSelection(); Assert.IsTrue(_exp.AcknowledgeMediumRisk(r.ScenarioId, r.DataVersion)); Assert.IsTrue(_exp.VerifyAuthorizationForExecution()); }
         [Test] public void TC_RSK_04_HighBlocks() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-D"); Assert.AreEqual(RiskCategory.High, _exp.AssessCurrentSelection().Risk); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
-        [Test] public void TC_RSK_05_UnknownBlocks() { _sel.SelectPair("CH-04", "CH-06"); Assert.AreEqual(RiskCategory.Unknown, _exp.AssessCurrentSelection().Risk); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
+        [Test] public void TC_RSK_05_UnknownBlocks() { _sel.SelectPair("CH-01", "CH-02"); Assert.AreEqual(RiskCategory.Unknown, _exp.AssessCurrentSelection().Risk); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
         [Test] public void TC_RSK_06_MissingRecordBlocks() { _sel.SelectPair("CH-07", "CH-08"); Assert.IsFalse(_exp.AssessCurrentSelection().IsAuthorizedByRule); }
-        [Test] public void TC_RSK_07_UnreviewedPendingBlocks() { _sel.SelectPair("CH-02", "CH-05"); Assert.AreEqual(RiskCategory.Unknown, _exp.AssessCurrentSelection().Risk); }
+        [Test] public void TC_RSK_07_UnlistedCombinationBlocks() { _sel.SelectPair("CH-01", "CH-02"); Assert.AreEqual(RiskCategory.Unknown, _exp.AssessCurrentSelection().Risk); }
         [Test] public void TC_RSK_08_IncompleteRecordBlocks() { var exp = ScriptableObject.CreateInstance<ExperimentData>(); Assert.IsFalse(exp.IsCompleteForExecution()); Object.DestroyImmediate(exp); }
         [Test] public void TC_RSK_09_ChangedSelectionInvalidatesAuth() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-B"); _exp.AssessCurrentSelection(); _sel.SelectChemicalB("TEST-C"); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
         [Test] public void TC_RSK_10_ResetInvalidatesAuth() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-B"); _exp.AssessCurrentSelection(); _exp.ResetSession(); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
 
         // --- ADVISOR (8) ---
         [Test] public void TC_ADV_01_EligibleAlternativeFound() { _sel.IncludeSyntheticTestRecords = true; var list = SmartSafetyAdvisor.GetEligibleAlternatives(_db, "TEST-03", "TEST-A", "TEST-D", true); Assert.AreEqual(1, list.Count); }
-        [Test] public void TC_ADV_02_NoAlternativeInNormalMode() => Assert.AreEqual(0, SmartSafetyAdvisor.GetEligibleAlternatives(_db, "EXP-02", "CH-02", "CH-05", false).Count);
+        [Test] public void TC_ADV_02_NoAlternativeForMediumPair() => Assert.AreEqual(0, SmartSafetyAdvisor.GetEligibleAlternatives(_db, "EXP-02", "CH-02", "CH-05", false).Count);
         [Test] public void TC_ADV_03_UnreviewedLinkRejected() => Assert.AreEqual(0, SmartSafetyAdvisor.GetEligibleAlternatives(_db, "TEST-03", "TEST-A", "TEST-D", false).Count);
         [Test] public void TC_ADV_04_IncompleteLinkRejected() { var link = ScriptableObject.CreateInstance<AlternativeLink>(); Assert.IsFalse(link.IsComplete()); Object.DestroyImmediate(link); }
         [Test] public void TC_ADV_05_InvalidTargetRejected() { var list = SmartSafetyAdvisor.GetEligibleAlternatives(_db, "NONEXISTENT", "X", "Y", true); Assert.AreEqual(0, list.Count); }
         [Test] public void TC_ADV_06_SelectionClearsAuth() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-B"); _exp.AssessCurrentSelection(); var list = SmartSafetyAdvisor.GetEligibleAlternatives(_db, "TEST-03", "TEST-A", "TEST-D", true); SmartSafetyAdvisor.ApplyAlternative(list[0]); Assert.IsNull(_exp.CurrentAssessment); }
         [Test] public void TC_ADV_07_ReassessmentFromScratch() { _sel.IncludeSyntheticTestRecords = true; var list = SmartSafetyAdvisor.GetEligibleAlternatives(_db, "TEST-03", "TEST-A", "TEST-D", true); SmartSafetyAdvisor.ApplyAlternative(list[0]); Assert.AreEqual(RiskCategory.Low, _exp.AssessCurrentSelection().Risk); }
-        [Test] public void TC_ADV_08_OriginalRestrictionPreservedIfNoAlt() { _sel.SelectPair("CH-02", "CH-05"); _exp.AssessCurrentSelection(); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
+        [Test] public void TC_ADV_08_OriginalRestrictionPreservedIfNoAlt() { _sel.SelectPair("CH-01", "CH-02"); _exp.AssessCurrentSelection(); Assert.IsFalse(_exp.VerifyAuthorizationForExecution()); }
 
         // --- REACTION (8) ---
         [Test] public void TC_RXN_01_AuthorizedEffectStarts() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-B"); _exp.AssessCurrentSelection(); Assert.IsTrue(_exp.BeginSimulation()); }
         [Test] public void TC_RXN_02_UnauthorizedBlock() { Assert.IsFalse(_lab.TriggerPour()); Assert.IsFalse(_lab.TriggerMix()); }
         [Test] public void TC_RXN_03_MediumGateEnforced() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-C"); _exp.AssessCurrentSelection(); Assert.IsFalse(_lab.TriggerMix()); }
         [Test] public void TC_RXN_04_HighGateBlocked() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-D"); _exp.AssessCurrentSelection(); Assert.IsFalse(_lab.TriggerMix()); }
-        [Test] public void TC_RXN_05_UnknownGateBlocked() { _sel.SelectPair("CH-02", "CH-05"); _exp.AssessCurrentSelection(); Assert.IsFalse(_lab.TriggerMix()); }
+        [Test] public void TC_RXN_05_UnknownGateBlocked() { _sel.SelectPair("CH-01", "CH-02"); _exp.AssessCurrentSelection(); Assert.IsFalse(_lab.TriggerMix()); }
         [Test] public void TC_RXN_06_ResultMatchesCompletedScenario() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-B"); _exp.AssessCurrentSelection(); _exp.BeginSimulation(); _exp.CompleteSimulation(); Assert.AreEqual("TEST-01", _exp.CurrentAssessment.BoundExperiment.scenarioId); }
         [Test] public void TC_RXN_07_ResetClearsLabAndSession() { _lab.ResetVisuals(); _exp.ResetSession(); Assert.IsFalse(_lab.HasPoured); Assert.IsFalse(_exp.HasCompletedScenario); }
         [Test] public void TC_RXN_08_RepeatStartGuard() { _sel.IncludeSyntheticTestRecords = true; _sel.SelectPair("TEST-A", "TEST-B"); _exp.AssessCurrentSelection(); _lab.TriggerMix(); Assert.IsFalse(_lab.TriggerMix()); }

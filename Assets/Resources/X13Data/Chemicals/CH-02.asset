@@ -19,21 +19,22 @@ MonoBehaviour:
   physicalForm: Clear aqueous solution (0.10 M)
   propertiesSummary: Strong monoprotic mineral acid; completely dissociated in dilute
     aqueous solution.
-  sourceReference: Educational Reference Dataset (Pending Instructor Review)
+  sourceReference: SECTOR X-13 Educational Reference Dataset v1.0
   sdsReference: "Generic educational SDS summary \u2014 verify supplier SDS before
     physical use."
   hazardInfo: Corrosive stock chemical; causes skin burns and serious eye damage
     at higher molarities.
   precautions: Splash goggles, lab coat, nitrile gloves; handle under instructor
     supervision.
-  reviewStatus: 0
+  reviewStatus: 1
   supportedScenarioIds:
   - EXP-02
-  fixedConditionsNote: "Candidate EXP-02 (10 mL 0.10 M HCl + 10 mL 0.10 M NaOH) \u2014
-    awaiting scientific review."
+  - EXP-05
+  fixedConditionsNote: EXP-02 (10 mL 0.10 M HCl + 10 mL 0.10 M NaOH, MEDIUM) and
+    EXP-05 (with KOH, MEDIUM).
   arVisualDescription: Clear aqueous acid in Beaker A with standard glass vessel.
   visualAssetId: beaker_liquid_acid
   liquidColor: {r: 0.101960786, g: 0.8509804, b: 0.9607843, a: 1}
-  riskAssessmentSummary: Pending scientific review. Illustrative MEDIUM label is
-    not approval; blocked in normal mode.
+  riskAssessmentSummary: MEDIUM risk in dilute 0.10 M neutralisation presets EXP-02
+    and EXP-05 (acknowledgement required).
   isSyntheticTestRecord: 0

@@ -13,26 +13,27 @@ MonoBehaviour:
   m_Name: EXP-03
   m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
   scenarioId: EXP-03
-  title: Citric Acid + Calcium Carbonate (Candidate)
+  title: Citric Acid + Calcium Carbonate
   chemicalAId: CH-03
   chemicalBId: CH-10
   fixedConcentrationA: 0.10 M
   fixedQuantityA: 15 mL
-  fixedConcentrationB: Solid
-  fixedQuantityB: 2 g
-  fixedConditions: Open beaker, ambient temperature. Candidate only; awaiting review.
-  reviewedRiskCategory: 0
-  reviewStatus: 0
-  reviewEvidence: Pending scientific review
-  dataVersion: 0.1.0-pending
+  fixedConcentrationB: Suspension
+  fixedQuantityB: 10 mL
+  fixedConditions: 15 mL 0.10 M Citric Acid + 10 mL CaCO3 suspension, open beaker,
+    ambient 22 C.
+  reviewedRiskCategory: 1
+  reviewStatus: 1
+  reviewEvidence: X13-REV-2026-03
+  dataVersion: 1.0.0
   controls:
   - Open vessel
   - Eye protection
-  rationale: Awaiting scientific review. Blocked in normal mode.
-  observations: Pending review.
-  equation: 2 C6H8O7 + 3 CaCO3 -> Ca3(C6H5O7)2 + 3 H2O + 3 CO2 (unreviewed)
+  rationale: Mild organic acid reacting slowly with insoluble carbonate salt.
+  observations: Gentle effervescence as CO2 bubbles release from suspension.
+  equation: 2 C6H8O7 + 3 CaCO3 -> Ca3(C6H5O7)2 + 3 H2O + 3 CO2
   effectId: effervescence_co2
-  safetyNotes: Use open vessel.
-  educationalOutcome: Pending scientific review.
+  safetyNotes: Use open vessel and standard eye protection.
+  educationalOutcome: Illustrates organic acid reaction with mineral carbonate.
   alternativeIds: []
   isSyntheticTestRecord: 0

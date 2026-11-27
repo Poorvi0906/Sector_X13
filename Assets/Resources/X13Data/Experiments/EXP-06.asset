@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58fac425f33914a9164dc9c5a83c88, type: 3}
+  m_Name: EXP-06
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
+  scenarioId: EXP-06
+  title: Citric Acid + Calcium Hydroxide
+  chemicalAId: CH-03
+  chemicalBId: CH-07
+  fixedConcentrationA: 0.10 M
+  fixedQuantityA: 15 mL
+  fixedConcentrationB: Saturated
+  fixedQuantityB: 15 mL
+  fixedConditions: 15 mL 0.10 M Citric Acid + 15 mL Ca(OH)2 (limewater), ambient
+    22 C.
+  reviewedRiskCategory: 2
+  reviewStatus: 1
+  reviewEvidence: X13-REV-2026-06
+  dataVersion: 1.0.0
+  controls:
+  - Splash goggles
+  - Nitrile gloves
+  - Lab coat
+  rationale: Ca(OH)2 is an alkaline eye/skin irritant; requires PPE acknowledgement.
+  observations: Cloudy limewater neutralises with gentle warming.
+  equation: 2 C6H8O7 + 3 Ca(OH)2 -> Ca3(C6H5O7)2 + 6 H2O
+  effectId: neutralisation_glow
+  safetyNotes: Avoid eye contact with alkaline Ca(OH)2.
+  educationalOutcome: Shows triprotic organic acid neutralisation of an alkaline
+    earth hydroxide.
+  alternativeIds: []
+  isSyntheticTestRecord: 0

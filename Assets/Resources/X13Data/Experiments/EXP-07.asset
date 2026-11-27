@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58fac425f33914a9164dc9c5a83c88, type: 3}
+  m_Name: EXP-07
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
+  scenarioId: EXP-07
+  title: Sulfuric Acid + Sodium Hydroxide (Blocked)
+  chemicalAId: CH-04
+  chemicalBId: CH-05
+  fixedConcentrationA: 1.0 M
+  fixedQuantityA: 10 mL
+  fixedConcentrationB: 1.0 M
+  fixedQuantityB: 10 mL
+  fixedConditions: "10 mL 1.0 M H2SO4 + 10 mL 1.0 M NaOH (HIGH RISK \u2014 BLOCKED)."
+  reviewedRiskCategory: 3
+  reviewStatus: 1
+  reviewEvidence: X13-REV-2026-07
+  dataVersion: 1.0.0
+  controls:
+  - 'BLOCKED: High exothermic & corrosive splash hazard'
+  rationale: Strong diprotic acid + strong base produces rapid exothermic heat and
+    corrosive splash risk. Mixing blocked.
+  observations: "Blocked \u2014 no virtual simulation permitted."
+  equation: H2SO4 + 2 NaOH -> Na2SO4 + 2 H2O (BLOCKED)
+  effectId: blocked
+  safetyNotes: Use Smart Safety Advisor to switch to a safer dilute neutralisation
+    preset.
+  educationalOutcome: Identifies high exothermic hazard of concentrated mineral acid-base
+    mixing.
+  alternativeIds:
+  - ALT-01
+  isSyntheticTestRecord: 0

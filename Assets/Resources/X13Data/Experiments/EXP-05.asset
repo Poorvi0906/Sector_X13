@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58fac425f33914a9164dc9c5a83c88, type: 3}
+  m_Name: EXP-05
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
+  scenarioId: EXP-05
+  title: 'Dilute Neutralisation: HCl + KOH'
+  chemicalAId: CH-02
+  chemicalBId: CH-06
+  fixedConcentrationA: 0.10 M
+  fixedQuantityA: 10 mL
+  fixedConcentrationB: 0.10 M
+  fixedQuantityB: 10 mL
+  fixedConditions: 10 mL 0.10 M HCl + 10 mL 0.10 M KOH, ambient 22 C.
+  reviewedRiskCategory: 2
+  reviewStatus: 1
+  reviewEvidence: X13-REV-2026-05
+  dataVersion: 1.0.0
+  controls:
+  - Splash goggles
+  - Lab coat
+  - Nitrile gloves
+  rationale: Dilute strong acid + strong caustic alkali; exothermic neutralisation
+    requiring acknowledgement.
+  observations: Clear solution with mild heat release.
+  equation: HCl + KOH -> KCl + H2O
+  effectId: neutralisation_glow
+  safetyNotes: KOH and HCl stocks are corrosive; virtual acknowledgement required.
+  educationalOutcome: Demonstrates strong acid-base neutralisation yielding potassium
+    chloride.
+  alternativeIds: []
+  isSyntheticTestRecord: 0
