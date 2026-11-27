@@ -59,21 +59,33 @@ namespace SectorX13.UI
             rt.anchorMax = Vector2.one;
             rt.offsetMin = Vector2.zero;
             rt.offsetMax = Vector2.zero;
-            var img = go.GetComponent<Image>();
-            img.color = bgColor;
+            go.GetComponent<Image>().color = bgColor;
             return rt;
         }
 
-        public static RectTransform CreateCard(Transform parent, string name, Color bgColor, Color borderColor, float minHeight = 0f)
+        public static RectTransform CreateCard(Transform parent, string name, Color bgColor, Color borderColor, float minHeight = 0f, int radius = 24)
         {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Outline));
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image));
             go.transform.SetParent(parent, false);
             var img = go.GetComponent<Image>();
+            img.sprite = X13Visuals.GetRoundedRect(radius);
+            img.type = Image.Type.Sliced;
             img.color = bgColor;
 
-            var outline = go.GetComponent<Outline>();
-            outline.effectColor = borderColor;
-            outline.effectDistance = new Vector2(2f, -2f);
+            // Crisp rounded border overlay
+            var borderGo = new GameObject("Border", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+            borderGo.transform.SetParent(go.transform, false);
+            borderGo.GetComponent<LayoutElement>().ignoreLayout = true;
+            var brt = borderGo.GetComponent<RectTransform>();
+            brt.anchorMin = Vector2.zero;
+            brt.anchorMax = Vector2.one;
+            brt.offsetMin = Vector2.zero;
+            brt.offsetMax = Vector2.zero;
+            var bimg = borderGo.GetComponent<Image>();
+            bimg.sprite = X13Visuals.GetRoundedRect(radius, borderOnly: true, borderWidth: 2);
+            bimg.type = Image.Type.Sliced;
+            bimg.color = borderColor;
+            bimg.raycastTarget = false;
 
             var vlg = go.AddComponent<VerticalLayoutGroup>();
             vlg.padding = new RectOffset(32, 32, 26, 26);
@@ -89,6 +101,58 @@ namespace SectorX13.UI
                 le.minHeight = minHeight;
             }
 
+            return go.GetComponent<RectTransform>();
+        }
+
+        public static RectTransform CreateRow(Transform parent, string name, float spacing = 16f)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(HorizontalLayoutGroup));
+            go.transform.SetParent(parent, false);
+            var hlg = go.GetComponent<HorizontalLayoutGroup>();
+            hlg.spacing = spacing;
+            hlg.childControlWidth = true;
+            hlg.childControlHeight = true;
+            hlg.childForceExpandWidth = true;
+            hlg.childForceExpandHeight = false;
+            return go.GetComponent<RectTransform>();
+        }
+
+        public static Image CreateAtomIcon(Transform parent, string name, float size = 140f)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+            go.transform.SetParent(parent, false);
+            var le = go.GetComponent<LayoutElement>();
+            le.minWidth = size;
+            le.preferredWidth = size;
+            le.minHeight = size;
+            le.preferredHeight = size;
+
+            var img = go.GetComponent<Image>();
+            img.sprite = X13Visuals.GetAtomSprite();
+            img.preserveAspect = true;
+            img.raycastTarget = false;
+            return img;
+        }
+
+        public static RectTransform CreatePillBadge(Transform parent, string name, string text, Color borderAndTextColor)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+            go.transform.SetParent(parent, false);
+            var le = go.GetComponent<LayoutElement>();
+            le.minHeight = 46f;
+            le.preferredHeight = 46f;
+
+            var img = go.GetComponent<Image>();
+            img.sprite = X13Visuals.GetRoundedRect(22, borderOnly: true, borderWidth: 2);
+            img.type = Image.Type.Sliced;
+            img.color = borderAndTextColor;
+
+            var txt = CreateText(go.transform, "Label", text, 21, borderAndTextColor, FontStyle.Bold, TextAnchor.MiddleCenter);
+            var trt = txt.GetComponent<RectTransform>();
+            trt.anchorMin = Vector2.zero;
+            trt.anchorMax = Vector2.one;
+            trt.offsetMin = new Vector2(18f, 4f);
+            trt.offsetMax = new Vector2(-18f, -4f);
             return go.GetComponent<RectTransform>();
         }
 
@@ -123,18 +187,39 @@ namespace SectorX13.UI
             Color bgColor,
             Color textColor,
             Action onClick,
-            float height = 96f,
-            int fontSize = 30)
+            float height = 92f,
+            int fontSize = 28,
+            bool primaryGradient = false)
         {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button), typeof(Outline));
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
             go.transform.SetParent(parent, false);
 
             var img = go.GetComponent<Image>();
-            img.color = bgColor;
+            if (primaryGradient)
+            {
+                img.sprite = X13Visuals.GetGradientRoundedRect(new Color(0.02f, 0.90f, 0.98f, 1f), new Color(0.08f, 0.58f, 0.98f, 1f), 22);
+                img.type = Image.Type.Sliced;
+                img.color = Color.white;
+            }
+            else
+            {
+                img.sprite = X13Visuals.GetRoundedRect(20);
+                img.type = Image.Type.Sliced;
+                img.color = bgColor;
 
-            var outline = go.GetComponent<Outline>();
-            outline.effectColor = X13Theme.BorderSubtle;
-            outline.effectDistance = new Vector2(2f, -2f);
+                var borderGo = new GameObject("Border", typeof(RectTransform), typeof(Image));
+                borderGo.transform.SetParent(go.transform, false);
+                var brt = borderGo.GetComponent<RectTransform>();
+                brt.anchorMin = Vector2.zero;
+                brt.anchorMax = Vector2.one;
+                brt.offsetMin = Vector2.zero;
+                brt.offsetMax = Vector2.zero;
+                var bimg = borderGo.GetComponent<Image>();
+                bimg.sprite = X13Visuals.GetRoundedRect(20, borderOnly: true, borderWidth: 2);
+                bimg.type = Image.Type.Sliced;
+                bimg.color = X13Theme.BorderSubtle;
+                bimg.raycastTarget = false;
+            }
 
             var btn = go.GetComponent<Button>();
             btn.targetGraphic = img;
@@ -151,8 +236,8 @@ namespace SectorX13.UI
             var txtRt = txt.GetComponent<RectTransform>();
             txtRt.anchorMin = Vector2.zero;
             txtRt.anchorMax = Vector2.one;
-            txtRt.offsetMin = new Vector2(16f, 8f);
-            txtRt.offsetMax = new Vector2(-16f, -8f);
+            txtRt.offsetMin = new Vector2(18f, 8f);
+            txtRt.offsetMax = new Vector2(-18f, -8f);
 
             return btn;
         }
@@ -195,8 +280,7 @@ namespace SectorX13.UI
 
             var titleCol = new GameObject("TitleGroup", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(LayoutElement));
             titleCol.transform.SetParent(headerGo.transform, false);
-            var titleLe = titleCol.GetComponent<LayoutElement>();
-            titleLe.flexibleWidth = 1f;
+            titleCol.GetComponent<LayoutElement>().flexibleWidth = 1f;
             var titleVlg = titleCol.GetComponent<VerticalLayoutGroup>();
             titleVlg.spacing = 4f;
             titleVlg.childControlWidth = true;
@@ -206,8 +290,7 @@ namespace SectorX13.UI
             CreateText(titleCol.transform, "Subtitle", subtitle, 22, X13Theme.TextSecondary, FontStyle.Normal);
 
             var status = CreateText(headerGo.transform, "Status", statusText, 22, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleRight);
-            var statusLe = status.gameObject.AddComponent<LayoutElement>();
-            statusLe.minWidth = 180f;
+            status.gameObject.AddComponent<LayoutElement>().minWidth = 180f;
 
             return rt;
         }
@@ -240,15 +323,14 @@ namespace SectorX13.UI
             contentRt.sizeDelta = Vector2.zero;
 
             var vlg = content.GetComponent<VerticalLayoutGroup>();
-            vlg.padding = new RectOffset(32, 32, 24, 32);
-            vlg.spacing = 24f;
+            vlg.padding = new RectOffset(32, 32, 22, 32);
+            vlg.spacing = 22f;
             vlg.childControlWidth = true;
             vlg.childControlHeight = true;
             vlg.childForceExpandWidth = true;
             vlg.childForceExpandHeight = false;
 
-            var csf = content.GetComponent<ContentSizeFitter>();
-            csf.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            content.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
             var sr = scrollGo.GetComponent<ScrollRect>();
             sr.viewport = vpRt;
@@ -262,7 +344,7 @@ namespace SectorX13.UI
 
         public static void CreateBottomNav(Transform parent, int activeTabIndex, Action<string> onNavigate)
         {
-            var navGo = new GameObject("BottomNav", typeof(RectTransform), typeof(Image), typeof(Outline));
+            var navGo = new GameObject("BottomNav", typeof(RectTransform), typeof(Image));
             navGo.transform.SetParent(parent, false);
             var rt = navGo.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 0f);
@@ -272,9 +354,6 @@ namespace SectorX13.UI
             rt.anchoredPosition = Vector2.zero;
 
             navGo.GetComponent<Image>().color = X13Theme.HeaderNavy;
-            var outline = navGo.GetComponent<Outline>();
-            outline.effectColor = X13Theme.BorderSubtle;
-            outline.effectDistance = new Vector2(0f, 2f);
 
             var hlg = navGo.AddComponent<HorizontalLayoutGroup>();
             hlg.padding = new RectOffset(16, 16, 16, 16);
@@ -286,17 +365,17 @@ namespace SectorX13.UI
 
             var tabs = new (string label, string scene)[]
             {
-                ("HOME", X13SceneIds.Home),
-                ("EXPERIMENT", X13SceneIds.ChemicalSelection),
-                ("LIBRARY", X13SceneIds.ChemicalLibrary),
-                ("SAFETY", X13SceneIds.SafetyAssessment)
+                ("Home", X13SceneIds.Home),
+                ("Experiment", X13SceneIds.ChemicalSelection),
+                ("Library", X13SceneIds.ChemicalLibrary),
+                ("Safety", X13SceneIds.SafetyAssessment)
             };
 
             for (int i = 0; i < tabs.Length; i++)
             {
                 bool active = i == activeTabIndex;
                 string target = tabs[i].scene;
-                var btn = CreateButton(
+                CreateButton(
                     navGo.transform,
                     $"Tab_{tabs[i].label}",
                     tabs[i].label,
@@ -305,7 +384,6 @@ namespace SectorX13.UI
                     () => onNavigate?.Invoke(target),
                     100f,
                     24);
-                btn.GetComponent<Outline>().effectColor = active ? X13Theme.CyanAccent : X13Theme.BorderSubtle;
             }
         }
     }

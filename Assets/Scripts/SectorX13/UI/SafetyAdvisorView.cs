@@ -19,12 +19,17 @@ namespace SectorX13.UI
             var mgr = ExperimentManager.Instance;
             var assessment = mgr.CurrentAssessment;
 
+            var atomRow = X13UIBuilderRuntime.CreateRow(body, "AdvisorAtomRow");
+            X13UIBuilderRuntime.CreateAtomIcon(atomRow, "AdvisorAtom", 128f);
+            X13UIBuilderRuntime.CreateText(body, "AnalysisTag", "DATABASE ANALYSIS COMPLETE", 22, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
+
             var restrictionCard = X13UIBuilderRuntime.CreateCard(body, "RestrictionCard", X13Theme.CardSurface, X13Theme.RiskHigh);
-            X13UIBuilderRuntime.CreateText(restrictionCard, "Tag", "CURRENT RESTRICTION", 22, X13Theme.RiskHigh, FontStyle.Bold);
+            X13UIBuilderRuntime.CreateText(restrictionCard, "Tag", "CURRENT SELECTION", 21, X13Theme.CyanAccent, FontStyle.Bold);
             string pairText = sel.HasBothSelections
                 ? $"{sel.GetChemicalA()?.chemicalName ?? sel.ChemicalAId} + {sel.GetChemicalB()?.chemicalName ?? sel.ChemicalBId}"
                 : "No reagent pair selected";
             X13UIBuilderRuntime.CreateText(restrictionCard, "Pair", pairText, 27, X13Theme.TextPrimary, FontStyle.Bold);
+            X13UIBuilderRuntime.CreatePillBadge(restrictionCard, "StatusPill", assessment != null ? assessment.Risk.ToString().ToUpperInvariant() : "UNKNOWN", X13Theme.RiskHigh);
             X13UIBuilderRuntime.CreateText(
                 restrictionCard,
                 "Reason",
