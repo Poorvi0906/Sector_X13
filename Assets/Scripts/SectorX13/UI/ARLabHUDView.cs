@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace SectorX13.UI
 {
     /// <summary>
-    /// Renders the 07_AR_Laboratory HUD and binds POUR / MIX / RESET / VIEW RESULTS
+    /// Renders the 07_AR_Laboratory HUD and binds POUR / MIX / RESET / RESULTS
     /// directly to ReactionController and ExperimentManager.
     /// </summary>
     public static class ARLabHUDView
@@ -17,13 +17,13 @@ namespace SectorX13.UI
             var assessment = mgr.CurrentAssessment;
             string subtitle = assessment != null ? $"{assessment.ScenarioId} · {assessment.Risk}" : "UNAUTHORIZED";
 
-            X13UIBuilderRuntime.CreateHeader(root, "AR VIRTUAL LAB", subtitle, Application.isEditor ? "EDITOR SIM" : "AR LIVE", true, goBack);
+            X13UIBuilderRuntime.CreateHeader(root, "AR LAB", subtitle, Application.isEditor ? "EDITOR SIM" : "AR LIVE", true, goBack);
 
             var statusWrap = new GameObject("SimStatusWrap", typeof(RectTransform));
             statusWrap.transform.SetParent(root, false);
             var swRt = statusWrap.GetComponent<RectTransform>();
-            swRt.anchorMin = new Vector2(0.08f, 0.77f);
-            swRt.anchorMax = new Vector2(0.92f, 0.87f);
+            swRt.anchorMin = new Vector2(0.06f, 0.78f);
+            swRt.anchorMax = new Vector2(0.94f, 0.89f);
             swRt.offsetMin = Vector2.zero;
             swRt.offsetMax = Vector2.zero;
 
@@ -32,7 +32,8 @@ namespace SectorX13.UI
             statusCard.anchorMax = Vector2.one;
             statusCard.offsetMin = Vector2.zero;
             statusCard.offsetMax = Vector2.zero;
-            var statusLabel = X13UIBuilderRuntime.CreateText(statusCard, "Label", "SIMULATION STATUS: READY", 24, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
+            var statusLabel = X13UIBuilderRuntime.CreateText(statusCard, "Label", "SIMULATION STATUS: VESSELS PLACED", 24, X13Theme.CyanAccent, FontStyle.Bold, TextAnchor.MiddleCenter);
+            var progressLabel = X13UIBuilderRuntime.CreateText(statusCard, "Progress", "REACTION PROGRESS: 0%", 20, X13Theme.TextSecondary, FontStyle.Bold, TextAnchor.MiddleCenter);
 
             var lab = Object.FindFirstObjectByType<ReactionController>();
 
@@ -68,6 +69,7 @@ namespace SectorX13.UI
                 if (lab != null)
                 {
                     statusLabel.text = authorized ? lab.StatusMessage : "BLOCKED: RETURN TO ASSESSMENT";
+                    progressLabel.text = $"REACTION PROGRESS: {Mathf.RoundToInt(lab.Progress * 100f)}%";
                     pourBtn.interactable = authorized && !lab.IsSimulating && !lab.HasPoured;
                     mixBtn.interactable = authorized && !lab.IsSimulating && !lab.HasMixed;
                 }
