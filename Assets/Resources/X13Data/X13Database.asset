@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41e0a69eb5bcbb418ce4406d9c1876f, type: 3}
+  m_Name: X13Database
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ChemicalDatabase
+  chemicals:
+  - {fileID: 11400000, guid: d3d546abf5f7e2749980e5db67c132dd, type: 2}
+  - {fileID: 11400000, guid: e2620d9874609f74da283ccc3bb75f86, type: 2}
+  - {fileID: 11400000, guid: 373e7d8c8031d8d4088ce47ae9307a5f, type: 2}
+  - {fileID: 11400000, guid: 7acb90ef092aaa440a04a9b2b1e6f787, type: 2}
+  - {fileID: 11400000, guid: 4e7544e9cdd95054ba420683e1690c63, type: 2}
+  - {fileID: 11400000, guid: 4f824fe647906094ab9aa77402a130f9, type: 2}
+  - {fileID: 11400000, guid: 9466f85cb39a05645a892382e4038595, type: 2}
+  - {fileID: 11400000, guid: 2d3113b311742df468938bd6d231942a, type: 2}
+  - {fileID: 11400000, guid: 2d1faee1d9830154f991bb7c64b5a916, type: 2}
+  - {fileID: 11400000, guid: 396b92d8767055f478fb8e9c32a44d10, type: 2}
+  - {fileID: 11400000, guid: 4fbcbe58b8b77634987585aa119557cf, type: 2}
+  - {fileID: 11400000, guid: 2dcbc107f10530a4ab0b3b870e6f140f, type: 2}
+  - {fileID: 11400000, guid: 612e48379c83a924ca9856a1801ae8f9, type: 2}
+  - {fileID: 11400000, guid: 95a926b3658e1354b85fceb7cd30b7c4, type: 2}
+  experiments:
+  - {fileID: 11400000, guid: b0dc86ea607600c44b05e73c68fefcd9, type: 2}
+  - {fileID: 11400000, guid: f092742a019820e4596ab4d160c01251, type: 2}
+  - {fileID: 11400000, guid: 64d3fbb88464b5c4382c8bc951e6bb44, type: 2}
+  - {fileID: 11400000, guid: a95ef979d51818a45b1234c97cce970d, type: 2}
+  - {fileID: 11400000, guid: eb741128eb868f34f829d37625c26bcd, type: 2}
+  - {fileID: 11400000, guid: 10206aba629c2be48ad1448aad1a4957, type: 2}
+  alternatives:
+  - {fileID: 11400000, guid: 51b0d2ad74ba5824bab22bdfba2f7ab5, type: 2}

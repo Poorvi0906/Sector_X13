@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58fac425f33914a9164dc9c5a83c88, type: 3}
+  m_Name: EXP-02
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
+  scenarioId: EXP-02
+  title: 'Dilute Neutralisation: HCl + NaOH (Candidate)'
+  chemicalAId: CH-02
+  chemicalBId: CH-05
+  fixedConcentrationA: 0.10 M
+  fixedQuantityA: 10 mL
+  fixedConcentrationB: 0.10 M
+  fixedQuantityB: 10 mL
+  fixedConditions: 10 mL 0.10 M HCl + 10 mL 0.10 M NaOH, ambient temperature. Candidate
+    only; awaiting review.
+  reviewedRiskCategory: 0
+  reviewStatus: 0
+  reviewEvidence: Pending scientific review
+  dataVersion: 0.1.0-pending
+  controls:
+  - Splash goggles
+  - Lab coat
+  - Nitrile gloves
+  rationale: Instructor review pending. Per fail-closed specification, pending records
+    must remain UNKNOWN and blocked.
+  observations: Pending review.
+  equation: HCl + NaOH -> NaCl + H2O (unreviewed)
+  effectId: neutralisation_glow
+  safetyNotes: Both stock reagents are corrosive.
+  educationalOutcome: Pending scientific review.
+  alternativeIds: []
+  isSyntheticTestRecord: 0

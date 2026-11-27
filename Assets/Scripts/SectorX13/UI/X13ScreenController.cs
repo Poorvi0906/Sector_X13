@@ -143,32 +143,12 @@ namespace SectorX13.UI
 
         private void BuildChemicalLibrary(RectTransform root)
         {
-            X13UIBuilderRuntime.CreateHeader(root, "CHEMICAL LIBRARY", "REFERENCE DATA", ModeBadge, showBack: true, onBack: GoBack);
-            var body = X13UIBuilderRuntime.CreateScrollBody(root, X13Theme.HeaderHeight, X13Theme.BottomNavHeight);
-
-            var card = X13UIBuilderRuntime.CreateCard(body, "LibraryPlaceholder", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(card, "Heading", "Chemical Catalogue & 6-Section Profiles", 32, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(card, "Info", "Catalogue entries (CH-01 to CH-10) and their 6 profile tabs (Basic Info, Properties, Safety Info, Experiment Info, AR Info, Risk Assessment) are populated by the Chemical Database module.", 25, X13Theme.TextSecondary);
-            X13UIBuilderRuntime.CreateButton(card, "ToSelectionBtn", "GO TO SELECTION  ->", X13Theme.ButtonPrimaryBg, X13Theme.TextDark, () => Navigate(X13SceneIds.ChemicalSelection), 88f, 28);
-
-            X13UIBuilderRuntime.CreateBottomNav(root, 2, Navigate);
+            ChemicalLibraryView.Build(root, Navigate, GoBack);
         }
 
         private void BuildChemicalSelection(RectTransform root)
         {
-            X13UIBuilderRuntime.CreateHeader(root, "SELECT REACTANTS", "CHOOSE EXACTLY TWO", ModeBadge, showBack: true, onBack: GoBack);
-            var body = X13UIBuilderRuntime.CreateScrollBody(root, X13Theme.HeaderHeight, X13Theme.BottomNavHeight);
-
-            var slotCard = X13UIBuilderRuntime.CreateCard(body, "SlotsCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(slotCard, "SlotA", "CHEMICAL A: Not selected", 28, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(slotCard, "SlotB", "CHEMICAL B: Not selected", 28, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(slotCard, "Note", "Deliberate selection of both reagents is required. Changing selection clears any prior authorization.", 23, X13Theme.TextSecondary);
-
-            var assessBtn = X13UIBuilderRuntime.CreateButton(body, "AssessSafetyBtn", "ASSESS SAFETY  ->", X13Theme.ButtonPrimaryBg, X13Theme.TextDark, () => Navigate(X13SceneIds.SafetyAssessment), 96f, 30);
-            assessBtn.GetComponent<Image>().color = X13Theme.ButtonSecondaryBg;
-            assessBtn.GetComponentInChildren<Text>().color = X13Theme.CyanAccent;
-
-            X13UIBuilderRuntime.CreateBottomNav(root, 1, Navigate);
+            ChemicalSelectionView.Build(root, Navigate, GoBack);
         }
 
         private void BuildSafetyAssessment(RectTransform root)

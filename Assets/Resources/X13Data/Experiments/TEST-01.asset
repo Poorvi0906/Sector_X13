@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58fac425f33914a9164dc9c5a83c88, type: 3}
+  m_Name: TEST-01
+  m_EditorClassIdentifier: SectorX13.Runtime::SectorX13.Data.ExperimentData
+  scenarioId: TEST-01
+  title: "TEST ONLY \u2014 Low Risk Fixture"
+  chemicalAId: TEST-A
+  chemicalBId: TEST-B
+  fixedConcentrationA: TEST 0.1 M
+  fixedQuantityA: 10 mL
+  fixedConcentrationB: TEST 0.1 M
+  fixedQuantityB: 10 mL
+  fixedConditions: TEST ONLY synthetic low-risk fixture.
+  reviewedRiskCategory: 1
+  reviewStatus: 3
+  reviewEvidence: TEST_ONLY_QA_FIXTURE_V1
+  dataVersion: test-1.0.0
+  controls:
+  - 'TEST ONLY: Standard virtual PPE'
+  rationale: TEST ONLY synthetic record verifying LOW risk flow.
+  observations: 'TEST ONLY: Gentle colour shift and transfer animation.'
+  equation: TX-A + TX-B -> TX-AB (TEST ONLY)
+  effectId: neutralisation_glow
+  safetyNotes: "TEST ONLY fixture \u2014 not a real chemical."
+  educationalOutcome: Verifies LOW risk authorization and simulation.
+  alternativeIds: []
+  isSyntheticTestRecord: 1
