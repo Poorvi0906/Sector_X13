@@ -160,15 +160,7 @@ namespace SectorX13.UI
 
         private void BuildSafetyAdvisor(RectTransform root)
         {
-            X13UIBuilderRuntime.CreateHeader(root, "SMART SAFETY ADVISOR", "REVIEWED ALTERNATIVES", ModeBadge, showBack: true, onBack: GoBack);
-            var body = X13UIBuilderRuntime.CreateScrollBody(root, X13Theme.HeaderHeight, X13Theme.BottomNavHeight);
-
-            var card = X13UIBuilderRuntime.CreateCard(body, "AdvisorCard", X13Theme.CardSurface, X13Theme.BorderSubtle);
-            X13UIBuilderRuntime.CreateText(card, "Title", "No Reviewed Alternative Available", 30, X13Theme.TextPrimary, FontStyle.Bold);
-            X13UIBuilderRuntime.CreateText(card, "Body", "Only independently reviewed, explicitly linked alternatives are shown here. Unreviewed or pending presets are never offered.", 24, X13Theme.TextSecondary);
-            X13UIBuilderRuntime.CreateButton(card, "ReturnAssessmentBtn", "RETURN TO ASSESSMENT", X13Theme.ButtonSecondaryBg, X13Theme.CyanAccent, () => Navigate(X13SceneIds.SafetyAssessment), 88f, 28);
-
-            X13UIBuilderRuntime.CreateBottomNav(root, 3, Navigate);
+            SafetyAdvisorView.Build(root, Navigate, GoBack);
         }
 
         private void BuildARLaboratoryHUD(RectTransform root)
